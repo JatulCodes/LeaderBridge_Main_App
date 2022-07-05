@@ -1,0 +1,62 @@
+@import '../../styles/mixins/typography.scss';
+@import '../../styles/mixins/variable.scss';
+@import '../../styles/mixins/breakpoint.scss';
+
+.hero-banner-align {
+    margin-top: 50px;
+    margin-top: calc(80px + 54px);
+}
+.hero-grid {
+    display: grid;
+    grid-template-columns: 538px minmax(0 , 1fr);
+    justify-content: space-between;
+    gap: 0 30px;
+    .hero-grid-items {
+        h1 {
+            @include heading-large;
+            color: $heading-color;
+            line-height: 92px;
+        }
+        h2 {
+            @include text-md;
+            font-weight: 400;
+            color: $blue;
+            margin: 0 0 1rem 0;
+        }
+        p {
+            @include text-md;
+            font-weight: 400;
+            color: $gray;
+            margin: 0;
+        }
+        .home-list-alignment {
+            display: flex;
+            padding: 0 0 10px 0;
+            div:first-child {
+                padding-right: 10px;
+            }
+            div {
+                svg {
+                    stroke: $gray;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            div {
+                i {
+                    color: $gray;
+                    position: relative;
+                    top:5px;
+
+                }
+            }
+            div {
+                span {
+                    @include text-md;
+                    font-weight: 400;
+                    color: $gray;
+                }
+            }
+        }
+    }
+}

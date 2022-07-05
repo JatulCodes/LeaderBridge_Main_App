@@ -1,0 +1,107 @@
+@import "../../../styles/mixins/breakpoint.scss";
+@import "../../../styles/mixins/global.scss";
+@import "../../../styles/mixins/typography.scss";
+@import "../../../styles/mixins/variable.scss";
+
+.verification-form-center {
+  display: flex;
+  justify-content: center;
+
+  .verification-form-box {
+    width: 550px;
+    padding: 24px;
+    margin-top: 20px;
+
+    .logo-center-align {
+      display: flex;
+      margin-bottom: 20px;
+      justify-content: center;
+
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .verification-title {
+      h3 {
+        font-size: 30px;
+        line-height: 35px;
+        color: #011e4c;
+        font-weight: 600;
+        text-align: center;
+        margin: 0 0 10px 0;
+      }
+
+      p {
+        font-size: 18px;
+        color: #949494;
+        line-height: 28px;
+        margin: 0 0 20px 0;
+        text-align: center;
+      }
+    }
+
+    .bottom-align-form {
+      margin-bottom: 20px;
+
+      span {
+        font-size: 12px !important;
+      }
+    }
+
+    .verification-button-alignment {
+      display: flex;
+      margin-bottom: 10px;
+      justify-content: center;
+
+      button {
+        min-width: 140px;
+        height: 50px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      .back-button-style {
+        margin-right: 5px;
+        color: #363636;
+        background-color: transparent;
+        border: none;
+      }
+
+      .continue-button {
+        margin-left: 5px;
+        background-color: #e61952;
+        color: $white;
+        border: none;
+      }
+    }
+
+    .verification-form-control {
+      label {
+        font-size: 18px;
+        color: #404040;
+        font-weight: 500;
+        display: block;
+        padding-bottom: 10px;
+      }
+
+      select,
+      input {
+        width: 100%;
+        border-radius: 4px;
+        height: 60px;
+        border: 1px solid #c8c8c8;
+        background-color: $white;
+        font-size: 20px;
+        padding-left: 10px;
+        color: #363636;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

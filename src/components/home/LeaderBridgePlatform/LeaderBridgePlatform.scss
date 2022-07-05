@@ -1,0 +1,49 @@
+@import '../../../styles/mixins/variable.scss';
+@import '../../../styles/mixins/breakpoint.scss';
+@import '../../../styles/mixins/typography.scss';
+
+.leader-platform-align {
+    margin-top: calc(var(--medium-pixel) * 4 - -5px);
+    background-color: $background;
+    padding: calc(var(--medium-pixel) * 4 - -8px) 0 ;
+    .grid {
+        display: grid;
+        grid-template-columns: 538px minmax(0 , 1fr);
+        justify-content: space-between;
+        gap: 0 30px;
+        align-items: center;
+        .grid-items {
+            padding: 1rem;
+            h2 {
+                @include heading-1;
+                color: $black;
+            }
+            .button-alignment {
+                margin-top: calc(var(--normal-pixel) * 3 - -1px);
+                button {
+                    min-width: 131px;
+                    height: 36px;
+                }
+            }
+            ul {
+                margin: 32px 0 0 0;
+                padding: 0;
+                list-style: none;
+                li {
+                    text-decoration: none;
+                    color: $gray;
+                    @include text-md;
+                    // margin-bottom: calc(var(--normal-pixel) * 3 - 3px);
+                    display: flex;
+                    line-height: calc(var(--medium-pixel) * 3 - -2px);
+                    align-items: center;
+                    span {
+                        padding-left: var(--normal-pixel);
+                        display: block;
+                        margin-top: -3px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+@import '../../styles/mixins/global.scss';
+
+.active-page-section-alignment {
+    padding: 120px 0;
+
+    h1 {
+        @include heading-3;
+        color: $blue;
+        max-width: 850px;
+        margin: 0 0 20px 0;
+    }
+
+    p {
+        @include text-md;
+        color: #777;
+        max-width: 850px;
+        margin: 0 0 20px 0;
+    }
+
+    .two-button-style {
+        padding: 0 0 20px 0;
+
+        button {
+            padding: 8px 18px;
+            @include text;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            min-width: 120px;
+            background-color: #e61952;
+            color: #fff;
+            margin-right: 20px;
+        }
+
+        button:disabled,
+        button[disabled] {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+    }
+
+
+}
+
+.thankyou-message-style-alignment {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        @include heading-large;
+        color: $blue;
+    }
+}
+
+.checkbox-text-alignment-one-without {
+    display: flex;
+
+    input {
+        width: 18px;
+        height: 18px;
+    }
+
+    div:first-child {
+        margin: 5px 15px 0 0;
+    }
+}
+
+
+p span {
+    display: block;
+}

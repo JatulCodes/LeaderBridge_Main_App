@@ -1,0 +1,162 @@
+.signup-subject-alignment {
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 40px);
+  .signup-subject-box {
+    width: 800px;
+    margin-top: 20px;
+    padding: 1.5rem 1.5rem;
+    .logo-center-align {
+      display: flex;
+      margin-bottom: 20px;
+      justify-content: center;
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    .verification-title {
+      h3 {
+        font-size: 30px;
+        line-height: 35px;
+        color: #011e4c;
+        font-weight: 600;
+        text-align: center;
+        margin: 0 0 10px 0;
+      }
+      p {
+        font-size: 18px;
+        color: #949494;
+        line-height: 28px;
+        margin: 0 0 20px 0;
+        text-align: center;
+      }
+    }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 247px minmax(0, 1fr);
+      gap: 0 40px;
+      padding-top: 20px;
+      justify-content: space-between;
+      .profile-grid-items:nth-child(1) {
+        display: flex;
+        justify-content: center;
+      }
+      .profile-grid-items {
+        .subject-profile {
+          p {
+            font-size: 15px;
+            color: #212121;
+            cursor: pointer;
+            text-align: center;
+            margin: 10px 0 0 0;
+            text-align: center;
+          }
+        }
+        padding: 20px;
+        .profile-icon-design {
+          width: 155px;
+          height: 155px;
+          border-radius: 50%;
+          border: 1px solid #eaeaea;
+          padding: 25px 25px;
+          .child-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+            .child-image-grid-items {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              img {
+                width: 40px;
+                border-radius: 50%;
+                height: 40px;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+        .all-text-icon-alignment {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          .icon-text-alignment {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            stroke: #a5a5a5;
+            transition: 0.3s ease-in-out;
+            color: #a5a5a5;
+            cursor: pointer;
+            &:hover {
+              background-color: #f5f5f5;
+              color: #e61952 !important;
+              stroke: #e61952 !important;
+            }
+            .icon-align-counter-design {
+              width: 20px;
+              height: 20px;
+              background-color: #e74252;
+              border-radius: 50%;
+              color: #fff;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 12px;
+              font-weight: 500;
+              svg {
+                width: 15px !important;
+                height: 15px !important;
+              }
+            }
+            .icon-align {
+              display: flex;
+              svg {
+                width: 15px !important;
+                height: 15px !important;
+              }
+            }
+            .text {
+              p {
+                padding-left: 8px;
+                font-size: 15px;
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.continue-button-style {
+  display: flex;
+  align-items: center;
+  .continue-button-style-first {
+    background-color: #e61952;
+    color: #fff;
+    padding: 0 12px;
+    min-width: 110px;
+    font-size: 16px;
+    border-radius: 4px;
+    height: 45px;
+    margin-top: 1.85rem;
+    border: none;
+  }
+  .cancel-button-style-sec {
+    background-color: transparent;
+    color: #323232;
+    padding: 0 12px;
+    margin-right: 10px;
+    min-width: 110px;
+    font-size: 16px;
+    border-radius: 4px;
+    height: 45px;
+    margin-top: 1.85rem;
+    border: none;
+  }
+}

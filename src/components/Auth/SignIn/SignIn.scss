@@ -1,0 +1,234 @@
+@import '../../../styles/mixins/breakpoint.scss';
+@import '../../../styles/mixins/typography.scss';
+@import '../../../styles/mixins/variable.scss';
+.sign-in-grid {
+    display: flex;
+    gap: 0;
+    justify-content: space-between;
+    @include breakpoint("max-sm") {
+        height: auto;
+        display: block;
+    }
+    .sign-in-grid-items:nth-child(1) {
+        width: 45%;
+        height: 100%;
+        @include breakpoint("max-sm") {
+            width: 100%;
+        }
+        img {
+            object-fit: cover;
+        }
+    }
+    .sign-in-grid-items:nth-child(2) {
+        width: 55%;
+        @include breakpoint("max-sm") {
+            width: 100%;
+        }
+    }
+    .sign-in-grid-items {
+        display: flex;
+        align-items: center;
+        position: relative;
+        .sign-in-box {
+            width: calc(100% - 180px);
+            @include breakpoint("max-sm") {
+                width: 100%;
+                padding: 40px 0;
+            }
+        }
+        .form-details-align {
+            margin-top: calc(var(--medium-pixel) * 1 - 0px);
+            .dont-have-account {
+                margin-top: calc(var(--normal-pixel) * 4 - 0px);
+                display: flex;
+                justify-content: flex-start;
+                p {
+                    @include text-md;
+                    color: $heading-color;
+                    font-size: 16px;
+                    text-align: left;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                }
+                span {
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: $pink-2;
+                    padding-left: calc(var(--normal-pixel) - 2px);
+                    transition: .3s;
+                    &:hover {
+                        transform: translate(0, -3px);
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .button-center1 {
+                margin-top: calc(var(--medium-pixel) * 3 - 0px);
+                button {
+                    min-width: 140px;
+                    height: 50px;
+                    background-color: #e74251;
+                    font-size: calc(var(--medium-pixel) * 2 - 0px);
+                }
+            }
+            .form-group {
+                margin-bottom: calc(var(--medium-pixel) * 1 - 0px);
+                span {
+                    @include text-sm;
+                    color: $gray;
+                    display: block;
+                    text-align: left;
+                    padding-top: calc(var(--normal-pixel) - 0px);
+                    cursor: pointer;
+                    transition: .3s;
+                    &:hover {
+                        color: $pink-2
+                    }
+                }
+            }
+        }
+        h3 {
+            @include heading-3;
+            color: $heading-color;
+            // margin-bottom: calc(var(--normal-pixel) * 1 - -5px);
+            margin: 0;
+        }
+        p {
+            @include text-md;
+            color: $gray;
+            margin-top: 0;
+            text-align: center;
+            // font-size: calc(var(--medium-pixel) * 2 - 0px);
+            line-height: calc(var(--medium-pixel) * 3 - 0px);
+        }
+        .signup-left-align {
+            margin-bottom: calc(var(--medium-pixel) * 2 - 0px);
+            img {
+                @extend .auth-logo-size;
+            }
+        }
+        .logo-center {
+            margin-bottom: calc(var(--medium-pixel) * 2 - 0px);
+            display: flex;
+            justify-content: center;
+            img {
+                @extend .auth-logo-size;
+            }
+        }
+    }
+}
+
+.auth-logo-size {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.show-pass-style {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    svg {
+        stroke: #e61952;
+    }
+}
+
+.form-group input:focus .show-pass-style svg {
+    stroke: #e61952;
+}
+
+.dont-show-pass-style {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    svg {
+        stroke: #cecece;
+    }
+}
+
+.input-relative-style {
+    position: relative;
+}
+
+.forgot-password-style {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0 2rem 0;
+    span {
+        display: block;
+        text-align: right;
+    }
+}
+
+::deep {
+    .MuiTooltip-popper {
+        background: red;
+    }
+}
+
+::global .MuiTooltip-popper {
+    background: orange;
+}
+
+.new-phase-auth-change-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 50px;
+    right: 50%;
+    width: calc(100% - 34%);
+    background-color: rgb(255, 255, 255, .6);
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+    @include breakpoint("max-xl") {
+        width: calc(100% - 20%);
+    }
+    .new-phase-signup-button {
+        display: flex;
+        align-items: center;
+        padding: 10px 0 0 0;
+        justify-content: center;
+        button {
+            padding: 10px 24px;
+            background-color: #e74251;
+            @include text;
+            min-width: 140px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+        }
+    }
+    .child-text-phase-text-style {
+        padding: 0 20px;
+        p {
+            @include text;
+            color: #000;
+            font-weight: 500;
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+    }
+    .new-phase-alignment-logo {
+        display: flex;
+        padding: 0 0 20px 0;
+        align-items: center;
+        justify-content: center;
+        div {
+            display: flex;
+            align-items: center;
+        }
+        img {
+            max-width: 60px;
+        }
+        span {
+            @include heading-3;
+            color: $blue;
+            padding-left: 8px;
+            display: block;
+        }
+    }
+}

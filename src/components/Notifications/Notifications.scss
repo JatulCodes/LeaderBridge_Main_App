@@ -1,0 +1,85 @@
+@import '../../styles/mixins/typography.scss';
+@import '../../styles/mixins/variable.scss';
+@import '../../styles/mixins/breakpoint.scss';
+
+
+.notification-section-align {
+    .container-grid {
+        display: grid;
+        grid-template-columns: 350px minmax(0 , 1fr);
+        gap: 0 30px;
+        margin-bottom: 30px;
+        justify-content: space-between;
+        @include breakpoint("max-sm") {
+            grid-template-columns: repeat(1 , 1fr);
+            gap: 60px;
+        }
+        .container-grid-items {
+            .user-grid {
+                padding: 15px;
+                display: grid;
+                cursor: pointer;
+                grid-template-columns: 40px minmax(0 , 1fr);
+                gap: 0 20px;
+                border-bottom: 1px solid $border-color;
+                transition: .3s ease-in-out;
+                &:hover {
+                    background-color: $card-background;
+                } 
+                .user-grid-items {
+                    p {
+                        @include text-sm;
+                        color: $black-2; 
+                    }
+                    span {
+                        color: $gray;
+                        @include text-sm;
+                    }
+                    .profile-image {
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius:50%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+            .notification-box {
+                background-color: $card-background;
+                border: 1px solid $border-color;
+                border-radius: 4px;
+                position: sticky;
+                top: 125px;
+                .child-box {
+                    background-color: #efefef;
+                    padding: 20px;
+                    p {
+                        @include text-sm;
+                        color: $light-gray;
+                        margin: 0;
+                        text-align: center;
+                    }
+                    span {
+                        color: $pink-2;
+                        @include text-sm;
+                        display: block;
+                        text-align:center;
+                        cursor: pointer;
+                    }
+                }
+                .heading-text {
+                    padding: 30px 20px;
+                    h3 {
+                        @include heading-4;
+                        font-size: 30px;
+                        font-weight: 400;
+                        color: $black-2;
+                        margin: 0;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

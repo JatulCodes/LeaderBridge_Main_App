@@ -1,0 +1,102 @@
+@import '../../../styles/mixins/breakpoint.scss';
+@import '../../../styles/mixins/typography.scss';
+@import '../../../styles/mixins/variable.scss';
+
+.leader-pricing-section-align {
+    padding: calc(var(--normal-pixel) * 9 - -4px);
+    .download-grid {
+        display: grid;
+        grid-template-columns: repeat(2 , 1fr);
+        align-items: center;
+        gap: 0 30px;
+        margin-top: calc(var(--medium-pixel) * 6 - 0px);
+        justify-content: space-between;
+        .download-grid-items:nth-child(1) {
+            margin-left: 8.33%;
+            padding: 1rem;
+        }
+        .download-grid-items:nth-child(2) {
+            margin-left: 8.33%;
+            padding: 1rem;
+        }
+        .download-grid-items {
+            h2 {
+                @include heading-large;
+                max-width: 512px;
+                line-height: 1.4;
+                color: $heading-color;
+            }
+            .image-alignment {
+                display: flex;
+                margin-top: calc(var(--medium-pixel) * 5 - 0px);
+                align-items: center;
+                img {
+                    max-width: 150px;
+                }
+                img:first-child {
+                    margin-right: calc(var(--medium-pixel) * 2  - 0px);
+                }
+            }
+        }
+
+    }
+    .title-text {
+        h1 {
+            @include heading-large;
+            text-align: center;
+            line-height: 2;
+            color: $heading-color;            
+        }
+        .home-list-alignment {
+            display: flex;
+            padding: 0 0 10px 0;
+            div:first-child {
+                padding-right: 10px;
+            }
+            div {
+                svg {
+                    stroke: $gray;
+                    width: 20px;
+                    height: 20px;
+                    position: relative;
+                    top: 5px;
+                }
+            }
+            div {
+                i {
+                    color: $gray;
+                    position: relative;
+                    top:5px;
+
+                }
+            }
+            div {
+                span {
+                    @include text-md;
+                    font-weight: 400;
+                    color: $gray;
+                }
+            }
+        }
+        h3 {
+            @include text-md;
+            text-align: left;
+            line-height: 2;
+            color: $heading-color;
+            font-weight: 500;
+        }
+        p {
+            @include text-md;
+            color: $gray;
+        }
+        .button-center {
+            margin-top: calc(var(--normal-pixel) * 6 - 0px);
+            display: flex;
+            justify-content: center;
+            button {
+                min-width: 104px;
+                height: 36px;
+            }
+        }
+    }
+}

@@ -1,0 +1,65 @@
+@import '../../styles/mixins/typography.scss';
+@import '../../styles/mixins/breakpoint.scss';
+@import '../../styles/mixins/variable.scss';
+
+
+.privacy-section-align {
+    padding-bottom: 40px;
+    .privacy-title {
+        h1 {
+            @include heading-3;
+            color: $heading-color;
+            text-align: center;
+            margin-bottom: calc(var(--normal-pixel) * 6 - 0px);
+        }
+    }
+    .privacy-sub-title {
+        p {
+            @include text;
+            color: $heading-color;
+            margin-bottom: 15px;
+        }
+        span {
+            background-color: rgb(255, 255, 0);
+            color: rgb(51, 51, 51);
+        }
+        p:last-child {
+            margin-bottom: 0px;
+        }
+        ul {
+            li {
+                @include text;
+                color: $heading-color;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+
+.email-text-style {
+    p {
+        span {
+            @include text-bold;
+            font-weight: 600;
+            padding-right: 5px;
+        }
+    }
+}
+.list-add {
+    margin-top: 10px;
+    p {
+        @include text;
+        color: $heading-color;
+        margin: 0;
+        line-height: 20px;
+    }
+}
+
+.privacy-sub-title {
+    p {
+        @include text;
+        color: $heading-color;
+        margin: 0;
+    }
+}

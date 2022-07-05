@@ -1,0 +1,89 @@
+@import "../../styles/mixins/breakpoint.scss";
+@import "../../styles/mixins/typography.scss";
+@import "../../styles/mixins/variable.scss";
+
+.members-heading-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h2 {
+    @include heading-2;
+    color: $black-2;
+    font-weight: 500;
+    margin-bottom: 40px;
+  }
+}
+
+.member-grid {
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  gap: 20px;
+
+  .member-grid-items {
+    background-color: $card-background;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 20px;
+    .connect-button-center {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      button {
+        background-color: $background-dark;
+        padding: 5px 15px;
+        min-width: 120px;
+        height: 36px;
+        border-radius: 4px;
+        font-size: 13px;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        span {
+          padding-left: 5px;
+        }
+      }
+    }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 45px minmax(0, 1fr);
+      gap: 0 20px;
+      .profile-grid-items {
+        .child-text-alignment {
+          display: flex;
+          align-items: center;
+          span {
+            color: $gray;
+            @include text-sm;
+          }
+          .location-text {
+            padding-left: 15px;
+            i {
+              color: $gray;
+            }
+            span {
+              padding-left: 10px;
+            }
+          }
+        }
+
+        .profile-image {
+          img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+        p {
+          @include text-sm;
+          color: $black-3;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}

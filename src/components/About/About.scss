@@ -1,0 +1,34 @@
+@import '../../styles/mixins/typography.scss';
+@import '../../styles/mixins/breakpoint.scss';
+@import '../../styles/mixins/variable.scss';
+
+.about-title {
+    h3 {
+        @include heading-3;
+        color: $heading-color;
+        text-align: center;
+        margin-bottom: calc(var(--normal-pixel) * 6 - 0px);
+    }
+    span {
+        color: $pink-2;
+    }
+}
+
+.about-child-text {
+    p {
+        @include text;
+        color: $black-2;
+        font-weight: 500;
+        margin-bottom: calc(var(--normal-pixel) * 3 - 0px)
+    }
+}
+
+.about-children {
+    padding-bottom: 48px;
+    p {
+        @include text;
+        margin-bottom: calc(var(--normal-pixel) * 3 - 0px);
+        color: $black-2;
+    }
+}
+
