@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  useContext,
-  createContext,
-} from "react";
+import React, { useEffect, useState, useRef, useContext, createContext } from "react";
 import { useLocation, useHistory } from "react-router";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 import { ApiDelete, ApiGet, ApiPost, ApiPut } from "../../Helpers/Api/ApiData";
@@ -29,10 +23,11 @@ import ReceivedVideoCallScreen from "../Chat/ReceivedVideoCallScreen";
 import useMyquery from "./useMyquery";
 import { DataLoaded } from "../../App";
 import Linkify from "react-linkify";
+import upVote from "../../Assets/Images/up.png";
+import downVote from "../../Assets/Images/down.png";
 
 export default function Request() {
-  const { answer, myquery, request, answerLaterUser, FilterData } =
-    useContext(DataLoaded);
+  const { answer, myquery, request, answerLaterUser, FilterData } = useContext(DataLoaded);
 
   const [myQueryData, setMyQueryData] = myquery;
   const [requestData, setRequestData] = request;
@@ -48,9 +43,7 @@ export default function Request() {
   const DDD = new Date();
 
   let FF = moment(DDD).format("DD-MM-YYYY hh:mm:ss");
-  let FFEE = moment("2022-04-03T20:36:19.970Z")
-    .utc()
-    .format("DD-MM-YYYY hh:mm:ss");
+  let FFEE = moment("2022-04-03T20:36:19.970Z").utc().format("DD-MM-YYYY hh:mm:ss");
   console.log("DDDDDDDDDDDD", DDD);
   console.log("FFFFFFFFFFF", FF);
   console.log("   ", FFEE);
@@ -101,30 +94,22 @@ export default function Request() {
   const [idComparePopup, setIdComparePopup] = useState(false);
   const [inputValue, setinputValue] = useState("");
   const [idReportAbuse, setIdReportAbuse] = useState("");
-  const [inputForReportAbuse, setInputForReportAbuse] =
-    useState("Its Annoying");
+  const [inputForReportAbuse, setInputForReportAbuse] = useState("Its Annoying");
   const [idForDeleteAskedQuestion, setIdForDeleteAskedQuestion] = useState();
   const [openmodalDelete, setOpenModalDelete] = useState(false);
-  const [openmodalDeleteAnswerLater, setOpenmodalDeleteAnswerLater] =
-    useState(false);
-  const [
-    openModalRemoveQuestionIReceived,
-    setOpenModalRemoveQuestionIReceived,
-  ] = useState(false);
-  const [IdForRemoveQuestionIReceived, setIdForRemoveQuestionIReceived] =
-    useState("");
-  const [customMessage, setCustomMessage] = useState(
-    "Hi, I want to connect with you .."
-  );
+  const [openmodalDeleteAnswerLater, setOpenmodalDeleteAnswerLater] = useState(false);
+  const [openModalRemoveQuestionIReceived, setOpenModalRemoveQuestionIReceived] = useState(false);
+  const [IdForRemoveQuestionIReceived, setIdForRemoveQuestionIReceived] = useState("");
+  const [customMessage, setCustomMessage] = useState("Hi, I want to connect with you ..");
   const [senderId, setSenderId] = useState("");
   //popupForRemove
   const [open, setOpen] = React.useState(false);
   const [userData, setUserData] = useState({});
-  const { SendConnectionRequest, Blockuser } = useMyquery(
-    setCustomMessage,
-    fetchQuestionIHaveReceived,
-    setOpenModal
-  );
+  const { SendConnectionRequest, Blockuser } = useMyquery(setCustomMessage, fetchQuestionIHaveReceived, setOpenModal);
+
+  //<--------------questions ratings-------->
+
+  
 
   const dropdown = useRef(null);
 
@@ -218,9 +203,7 @@ export default function Request() {
 
   const handleSubjectSelect = (sub, id) => {
     if (selectedTopSubjects?.find((ss) => ss === sub?.subject)) {
-      setSelectedTopSubjects((curVal) =>
-        curVal.filter((cv) => cv !== sub?.subject)
-      );
+      setSelectedTopSubjects((curVal) => curVal.filter((cv) => cv !== sub?.subject));
     } else {
       setSelectedTopSubjects((curVal) => [...curVal, sub?.subject]);
     }
@@ -314,9 +297,7 @@ export default function Request() {
 
   const fetchQuestionForPagination = async () => {
     if (inputValue) {
-      const res = await ApiGet(
-        `question/get-question?page=${page}&limit=10&search=${inputValue}`
-      );
+      const res = await ApiGet(`question/get-question?page=${page}&limit=10&search=${inputValue}`);
 
       const data = await res?.data?.payload?.questions;
 
@@ -376,7 +357,7 @@ export default function Request() {
   const answerLater = (idAnswerLater) => {
     ApiPost(`answer/id=${idAnswerLater}`)
       .then((res) => {
-        if (res.data.result == 0) {
+        if (res.data.result === 0) {
           fetchQuestionIHaveReceived();
 
           const state = { ...history.location.state, updateAnswerLater: true };
@@ -394,7 +375,7 @@ export default function Request() {
   const removeAnswerLater = () => {
     ApiPut(`answer/${idForRemove}`)
       .then((res) => {
-        if (res.data.result == 0) {
+        if (res.data.result === 0) {
           fetchQuestionIHaveReceived();
           setOpenmodalDeleteAnswerLater(false);
           toast.success(res.data.message);
@@ -412,7 +393,7 @@ export default function Request() {
   const removeQuestionIReceived = () => {
     ApiPut(`question/remove/id=${IdForRemoveQuestionIReceived}`)
       .then((res) => {
-        if (res.data.result == 0) {
+        if (res.data.result === 0) {
           fetchQuestionIHaveReceived();
           setOpenModalRemoveQuestionIReceived(false);
           const state = { ...history.location.state, updateAnswerLater: true };
@@ -434,7 +415,7 @@ export default function Request() {
   const deleteQuestion = (id) => {
     ApiDelete(`question/${id}`)
       .then((res) => {
-        if (res.data.result == 0) {
+        if (res.data.result === 0) {
           fetchQuestionIHaveReceived();
           setOpenModalDelete(false);
           setIdForDeleteAskedQuestion();
@@ -458,10 +439,8 @@ export default function Request() {
   const getTopSubject = async (allQuestion) => {
     if (allQuestion?.displayProfile === true) {
       const data = allQuestion?.filter?.map((f) => {
-        if (f?.filterId == "619e07b7641d2f00f887ec96") {
-          return f?.optionName?.options?.find(
-            (o) => o?.optionName === userData?.subject
-          );
+        if (f?.filterId === "619e07b7641d2f00f887ec96") {
+          return f?.optionName?.options?.find((o) => o?.optionName === userData?.subject);
         }
       });
       if (data) {
@@ -475,6 +454,19 @@ export default function Request() {
       return "";
     }
   };
+  
+  //<--------------questions ratings-------->
+  const [rating, setRating] = useState(0);
+  const incre =()=>{
+    setRating (rating+ 1)
+  }
+  const decre =()=>{
+    if(rating > 0){
+      setRating(rating -1)
+    }else{
+      setRating(0)
+    }
+  }
 
   return (
     <>
@@ -484,11 +476,7 @@ export default function Request() {
           <div className="my-query-grid">
             <div className="my-query-grid-items">
               <>
-                <Sidebar
-                  handleSubjectSelect={handleSubjectSelect}
-                  selectedTopSubjects={selectedTopSubjects}
-                  setSelectedTopSubjects={setSelectedTopSubjects}
-                />
+                <Sidebar handleSubjectSelect={handleSubjectSelect} selectedTopSubjects={selectedTopSubjects} setSelectedTopSubjects={setSelectedTopSubjects} />
               </>
             </div>
 
@@ -497,31 +485,14 @@ export default function Request() {
                 <div className="my-query-grid-items no-anwer-data">
                   <div className="search-input-alignment-end">
                     <div className="input-relative-search">
-                      <input
-                        type="search"
-                        placeholder="Search for question"
-                        id="searchData"
-                        onChange={(e) => handleOnChnage(e)}
-                        value={inputValue}
-                        name="searchData"
-                      />
+                      <input type="search" placeholder="Search for question" id="searchData" onChange={(e) => handleOnChnage(e)} value={inputValue} name="searchData" />
                       <div
                         className="search-icon-center"
                         onClick={() => {
                           setinputValue("");
                         }}
                       >
-                        <svg
-                          viewBox="0 0 24 24"
-                          width="20"
-                          height="20"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="css-i6dzq1"
-                        >
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                           <circle cx="11" cy="11" r="8"></circle>
                           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
@@ -535,11 +506,7 @@ export default function Request() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton
-                              variant="text"
-                              width={"80%"}
-                              height={25}
-                            />
+                            <Skeleton variant="text" width={"80%"} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -549,11 +516,7 @@ export default function Request() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton
-                              variant="text"
-                              width={"80%"}
-                              height={25}
-                            />
+                            <Skeleton variant="text" width={"80%"} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -563,11 +526,7 @@ export default function Request() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton
-                              variant="text"
-                              width={"80%"}
-                              height={25}
-                            />
+                            <Skeleton variant="text" width={"80%"} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -577,11 +536,7 @@ export default function Request() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton
-                              variant="text"
-                              width={"80%"}
-                              height={25}
-                            />
+                            <Skeleton variant="text" width={"80%"} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -591,11 +546,7 @@ export default function Request() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton
-                              variant="text"
-                              width={"80%"}
-                              height={25}
-                            />
+                            <Skeleton variant="text" width={"80%"} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -614,15 +565,9 @@ export default function Request() {
                   ) : (
                     <>
                       <InfiniteScroll
-                        dataLength={
-                          allReceivedQuestion?.questions?.length > 0
-                            ? allReceivedQuestion?.questions?.length
-                            : 0
-                        } //This is important field to render the next data
+                        dataLength={allReceivedQuestion?.questions?.length > 0 ? allReceivedQuestion?.questions?.length : 0} //This is important field to render the next data
                         next={fetchData}
-                        hasMore={
-                          allReceivedQuestion?.count < 10 ? false : hasMore
-                        }
+                        hasMore={allReceivedQuestion?.count < 10 ? false : hasMore}
                         loader={
                           <div
                             style={{
@@ -644,157 +589,74 @@ export default function Request() {
                         {allReceivedQuestion?.questions?.map((allQuestion) => {
                           return (
                             <div className="card-grid">
-                              <div
-                                className={
-                                  filterOpen
-                                    ? "card-grid-items filter-open-card-grid-items-none"
-                                    : "card-grid-items"
-                                }
-                              >
+                              <div className={filterOpen ? "card-grid-items filter-open-card-grid-items-none" : "card-grid-items"}>
                                 <div className="card-child-grid">
                                   <div className="card-child-grid-items">
-                                    <div
-                                      className={
-                                        filterOpen
-                                          ? "profile-grid profile-grid-filter-z-index"
-                                          : "profile-grid"
-                                      }
-                                    >
+                                    <div className={filterOpen ? "profile-grid profile-grid-filter-z-index" : "profile-grid"}>
                                       <div className="profile-grid-items">
                                         <div className="profile-image">
                                           <div className="popover__wrapper">
-                                            <img
-                                              className=""
-                                              src={
-                                                allQuestion?.displayProfile ===
-                                                true
-                                                  ? allQuestion?.createdBy
-                                                      ?.profileImage
-                                                  : ProfileImg
-                                              }
-                                            />
-                                            {allQuestion?.displayProfile ===
-                                              true && (
+                                            <img className="" src={allQuestion?.displayProfile === true ? allQuestion?.createdBy?.profileImage : ProfileImg} />
+                                            {allQuestion?.displayProfile === true && (
                                               <div class="popover__content">
                                                 <div class="card is-ad mb-0 no-border">
                                                   <div class="card-flex friend-card aftershimmer">
                                                     <div class="friend-info">
                                                       <div class="pop-up-top-part">
-                                                        <p class="mb-0 font-size-25 text-white">
-                                                          {
-                                                            allQuestion
-                                                              ?.createdBy
-                                                              ?.currentRole
-                                                          }
-                                                        </p>
+                                                        <p class="mb-0 font-size-25 text-white">{allQuestion?.createdBy?.currentRole}</p>
                                                         <p class="font-size-20 text-white">
                                                           <span>
-                                                            <svg
-                                                              viewBox="0 0 24 24"
-                                                              width="20"
-                                                              height="20"
-                                                              stroke="currentColor"
-                                                              stroke-width="2"
-                                                              fill="none"
-                                                              stroke-linecap="round"
-                                                              stroke-linejoin="round"
-                                                              class="css-i6dzq1 text-white"
-                                                            >
+                                                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1 text-white">
                                                               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                                              <circle
-                                                                cx="12"
-                                                                cy="10"
-                                                                r="3"
-                                                              ></circle>
+                                                              <circle cx="12" cy="10" r="3"></circle>
                                                             </svg>
                                                           </span>
                                                         </p>
                                                       </div>
                                                       <span class="user-name-left-side">
-                                                        {allQuestion?.createdBy?.subject?.map(
-                                                          (sub) => (
-                                                            <span class="badge badge-light">
-                                                              {sub}
-                                                            </span>
-                                                          )
-                                                        )}
+                                                        {allQuestion?.createdBy?.subject?.map((sub) => (
+                                                          <span class="badge badge-light">{sub}</span>
+                                                        ))}
                                                       </span>
                                                     </div>
 
                                                     <div class="display-flex">
-                                                      <NavLink
-                                                        to={`/view-profile/${allQuestion?.createdBy?._id}`}
-                                                        class="btn view-profile-btn mr-auto"
-                                                      >
+                                                      <NavLink to={`/view-profile/${allQuestion?.createdBy?._id}`} class="btn view-profile-btn mr-auto">
                                                         {" "}
                                                         View Profile{" "}
                                                       </NavLink>
-                                                      {allQuestion?.allowConnectionRequest ===
-                                                      true ? (
-                                                        allQuestion?.isFriend ===
-                                                        "false" ? (
+                                                      {allQuestion?.allowConnectionRequest === true ? (
+                                                        allQuestion?.isFriend === "false" ? (
                                                           <div
                                                             className="abc"
                                                             onClick={() => {
-                                                              setOpenModal(
-                                                                !openmodal
-                                                              );
-                                                              setSenderId(
-                                                                allQuestion
-                                                                  ?.createdBy
-                                                                  ?._id
-                                                              );
+                                                              setOpenModal(!openmodal);
+                                                              setSenderId(allQuestion?.createdBy?._id);
                                                             }}
                                                           >
-                                                            <svg
-                                                              viewBox="0 0 24 24"
-                                                              width="18"
-                                                              height="18"
-                                                              stroke="currentColor"
-                                                              stroke-width="2"
-                                                              fill="none"
-                                                              stroke-linecap="round"
-                                                              stroke-linejoin="round"
-                                                              class="css-i6dzq1"
-                                                            >
+                                                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                                                               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                                               <polyline points="22,6 12,13 2,6"></polyline>
                                                             </svg>
                                                           </div>
-                                                        ) : allQuestion?.isFriend ===
-                                                          "true" ? (
+                                                        ) : allQuestion?.isFriend === "true" ? (
                                                           <div
                                                             className="abc"
                                                             onClick={(e) => {
                                                               history.push({
-                                                                pathname:
-                                                                  "/chat",
+                                                                pathname: "/chat",
                                                                 state: {
-                                                                  user_id:
-                                                                    allQuestion
-                                                                      ?.createdBy
-                                                                      ?._id,
+                                                                  user_id: allQuestion?.createdBy?._id,
                                                                 },
                                                               });
                                                             }}
                                                           >
-                                                            <svg
-                                                              viewBox="0 0 24 24"
-                                                              width="18"
-                                                              height="18"
-                                                              stroke="currentColor"
-                                                              stroke-width="2"
-                                                              fill="none"
-                                                              stroke-linecap="round"
-                                                              stroke-linejoin="round"
-                                                              class="css-i6dzq1"
-                                                            >
+                                                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                                                               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                                               <polyline points="22,6 12,13 2,6"></polyline>
                                                             </svg>
                                                           </div>
-                                                        ) : allQuestion?.isFriend ===
-                                                          "sent" ? (
+                                                        ) : allQuestion?.isFriend === "sent" ? (
                                                           ""
                                                         ) : (
                                                           ""
@@ -809,36 +671,27 @@ export default function Request() {
                                             )}
                                           </div>
                                         </div>
+                                        <div className="votes">
+                                          <img src={upVote} onClick={incre} className="vote-icon"/>
+                                          <div className="rating">{rating}</div>
+                                          <img
+                                            src={downVote}
+                                            className="vote-icon"
+                                            onClick={decre}/>
+                                        </div>
                                       </div>
-
                                       <div className="profile-grid-items">
-                                        {allQuestion?.createdBy
-                                          ?.currentRole && (
+                                        {allQuestion?.createdBy?.currentRole && (
                                           <span class="borderlefttext">
-                                            <span class="category">
-                                              {" "}
-                                              {`${allQuestion?.createdBy?.currentRole}`}
-                                            </span>
+                                            <span class="category"> {`${allQuestion?.createdBy?.currentRole}`}</span>
                                           </span>
                                         )}
 
                                         {allQuestion?.displayProfile === true &&
                                         allQuestion?.filter?.map((f) => {
-                                          if (
-                                            f?.filterId ==
-                                            "619e07b7641d2f00f887ec96"
-                                          ) {
+                                          if (f?.filterId === "619e07b7641d2f00f887ec96") {
                                             return f?.options?.map((o) => {
-                                              if (
-                                                userData?.subject[0] ==
-                                                  o?.optionName ||
-                                                userData?.subject[1] ==
-                                                  o?.optionName ||
-                                                userData?.subject[2] ==
-                                                  o?.optionName ||
-                                                userData?.subject[3] ==
-                                                  o?.optionName
-                                              ) {
+                                              if (userData?.subject[0] === o?.optionName || userData?.subject[1] === o?.optionName || userData?.subject[2] === o?.optionName || userData?.subject[3] === o?.optionName) {
                                                 return o?.optionName;
                                               }
                                             });
@@ -847,15 +700,9 @@ export default function Request() {
                                           <span class="borderlefttext">
                                             {allQuestion?.filter?.map((f) => {
                                               return (
-                                                f?.filterId ==
-                                                  "619e07b7641d2f00f887ec96" &&
+                                                f?.filterId === "619e07b7641d2f00f887ec96" &&
                                                 f?.options?.map((opt) => {
-                                                  return (
-                                                    <span class="category">
-                                                      {" "}
-                                                      {`${opt?.optionName}, `}
-                                                    </span>
-                                                  );
+                                                  return <span class="category"> {`${opt?.optionName}, `}</span>;
                                                 })
                                               );
                                             })}
@@ -866,21 +713,7 @@ export default function Request() {
 
                                         <h2>
                                           {" "}
-                                          <ReactReadMoreReadLess
-                                            charLimit={330}
-                                            readMoreText={
-                                              <h6 className="ReadMore">
-                                                Read more
-                                              </h6>
-                                            }
-                                            readLessText={
-                                              <h6 className="ReadLess">
-                                                Read less
-                                              </h6>
-                                            }
-                                            readMoreClassName="read-more-less--more"
-                                            readLessClassName="read-more-less--less"
-                                          >
+                                          <ReactReadMoreReadLess charLimit={330} readMoreText={<h6 className="ReadMore">Read more</h6>} readLessText={<h6 className="ReadLess">Read less</h6>} readMoreClassName="read-more-less--more" readLessClassName="read-more-less--less">
                                             {allQuestion.question}
                                             {/* <div
                                               dangerouslySetInnerHTML={{
@@ -904,130 +737,49 @@ export default function Request() {
                                           <Tooltip title="User reach" arrow>
                                             <p>Reach ({allQuestion?.reach})</p>
                                           </Tooltip>
-                                          <Tooltip
-                                            title="Total responses received"
-                                            arrow
-                                          >
+                                          <Tooltip title="Total responses received" arrow>
                                             <ul>
                                               <Tooltip title="User reach" arrow>
-                                                <li
-                                                  onClick={() =>
-                                                    setOpenAnswerModal(
-                                                      !openAnswerModal
-                                                    )
-                                                  }
-                                                >
-                                                  Responses (
-                                                  {allQuestion.response})
-                                                </li>
+                                                <li onClick={() => setOpenAnswerModal(!openAnswerModal)}>Responses ({allQuestion.response})</li>
                                               </Tooltip>
                                             </ul>
                                           </Tooltip>
 
                                           <ul>
                                             <li>
-                                              {console.log(
-                                                " allQuestion.createdAt",
-                                                allQuestion.createdAt
-                                              )}
-                                              {moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() ==
-                                                "a few seconds ago"}
-                                              {moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() ==
-                                                "a few seconds ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "1 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "2 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "3 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "4 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "5 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "6 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "7 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "8 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "9 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "10 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "11 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "12 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "13 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "14 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "15 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "16 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "17 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "18 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "19 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "20 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "21 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "22 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "23 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "3 days ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "1 days ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "2 days ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "4 days ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "5 days ago"
-                                                ? moment(
-                                                    allQuestion.createdAt
-                                                  ).fromNow()
-                                                : moment(
-                                                    allQuestion.createdAt
-                                                  ).format("ll")}
+                                              {console.log(" allQuestion.createdAt", allQuestion.createdAt)}
+                                              {moment(allQuestion.createdAt).fromNow() === "a few seconds ago"}
+                                              {moment(allQuestion.createdAt).fromNow() === "a few seconds ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "1 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "2 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "3 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "4 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "5 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "6 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "7 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "8 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "9 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "10 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "11 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "12 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "13 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "14 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "15 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "16 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "17 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "18 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "19 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "20 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "21 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "22 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "23 hours ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "3 days ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "1 days ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "2 days ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "4 days ago" ||
+                                              moment(allQuestion.createdAt).fromNow() === "5 days ago"
+                                                ? moment(allQuestion.createdAt).fromNow()
+                                                : moment(allQuestion.createdAt).format("ll")}
 
                                               {/* {moment(
                             allQuestion.createdAt
@@ -1036,23 +788,11 @@ export default function Request() {
                                           </ul>
                                         </div>
                                         <div className="button-alignment">
-                                          <NavLink
-                                            to={`/answer/${allQuestion._id}`}
-                                          >
+                                          <NavLink to={`/answer/${allQuestion._id}`}>
                                             <button>
                                               {/* <i class="fas fa-pen"></i> */}
                                               <div className="pen-icon-svg">
-                                                <svg
-                                                  viewBox="0 0 24 24"
-                                                  width="24"
-                                                  height="24"
-                                                  stroke="currentColor"
-                                                  stroke-width="2"
-                                                  fill="none"
-                                                  stroke-linecap="round"
-                                                  stroke-linejoin="round"
-                                                  class="css-i6dzq1"
-                                                >
+                                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                                                   <path d="M12 20h9"></path>
                                                   <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
                                                 </svg>
@@ -1068,105 +808,45 @@ export default function Request() {
                                             <i class="fas fa-undo-alt"></i>
                                             <span>Answer Later</span>
                                           </button>
-                                          {allQuestion?.allowConnectionRequest ===
-                                          true ? (
-                                            allQuestion?.isFriend ===
-                                            "pending" ? (
+                                          {allQuestion?.allowConnectionRequest === true ? (
+                                            allQuestion?.isFriend === "pending" ? (
                                               <>
                                                 <button>
                                                   <NavLink to={`/connections`}>
-                                                    <svg
-                                                      viewBox="0 0 24 24"
-                                                      width="24"
-                                                      height="24"
-                                                      stroke="currentColor"
-                                                      stroke-width="2"
-                                                      fill="none"
-                                                      stroke-linecap="round"
-                                                      stroke-linejoin="round"
-                                                      class="css-i6dzq1 stroke-gray"
-                                                    >
+                                                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1 stroke-gray">
                                                       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                                      <circle
-                                                        cx="8.5"
-                                                        cy="7"
-                                                        r="4"
-                                                      ></circle>
+                                                      <circle cx="8.5" cy="7" r="4"></circle>
                                                       <polyline points="17 11 19 13 23 9"></polyline>
                                                     </svg>
                                                     <span>Pending</span>
                                                   </NavLink>
                                                 </button>
                                               </>
-                                            ) : allQuestion?.isFriend ==
-                                                "false" ||
-                                              allQuestion?.isFriend == false ? (
+                                            ) : allQuestion?.isFriend === "false" || allQuestion?.isFriend === false ? (
                                               <>
                                                 <button
                                                   onClick={() => {
                                                     setOpenModal(!openmodal);
-                                                    setSenderId(
-                                                      allQuestion?.createdBy
-                                                        ?._id
-                                                    );
+                                                    setSenderId(allQuestion?.createdBy?._id);
                                                   }}
                                                 >
-                                                  <svg
-                                                    viewBox="0 0 24 24"
-                                                    width="24"
-                                                    height="24"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    fill="none"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="css-i6dzq1 stroke-gray"
-                                                  >
+                                                  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1 stroke-gray">
                                                     <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                                    <circle
-                                                      cx="8.5"
-                                                      cy="7"
-                                                      r="4"
-                                                    ></circle>
-                                                    <line
-                                                      x1="20"
-                                                      y1="8"
-                                                      x2="20"
-                                                      y2="14"
-                                                    ></line>
-                                                    <line
-                                                      x1="23"
-                                                      y1="11"
-                                                      x2="17"
-                                                      y2="11"
-                                                    ></line>
+                                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                                                    <line x1="23" y1="11" x2="17" y2="11"></line>
                                                   </svg>
                                                   <span>Connect</span>
                                                 </button>
                                               </>
-                                            ) : allQuestion?.isFriend ===
-                                              "sent" ? (
+                                            ) : allQuestion?.isFriend === "sent" ? (
                                               <>
                                                 <button>
                                                   <NavLink to={`/connections`}>
                                                     <div className="sent-alignment-myqury">
-                                                      <svg
-                                                        viewBox="0 0 24 24"
-                                                        width="24"
-                                                        height="24"
-                                                        stroke="currentColor"
-                                                        stroke-width="2"
-                                                        fill="none"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="css-i6dzq1 stroke-gray"
-                                                      >
+                                                      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1 stroke-gray">
                                                         <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                                        <circle
-                                                          cx="8.5"
-                                                          cy="7"
-                                                          r="4"
-                                                        ></circle>
+                                                        <circle cx="8.5" cy="7" r="4"></circle>
                                                         <polyline points="17 11 19 13 23 9"></polyline>
                                                       </svg>
                                                       <span>sent</span>
@@ -1181,25 +861,13 @@ export default function Request() {
                                                     history.push({
                                                       pathname: "/chat",
                                                       state: {
-                                                        user_id:
-                                                          allQuestion?.createdBy
-                                                            ?._id,
+                                                        user_id: allQuestion?.createdBy?._id,
                                                       },
                                                     });
                                                   }}
                                                 >
                                                   <div className="Message-icon-alignment">
-                                                    <svg
-                                                      viewBox="0 0 24 24"
-                                                      width="24"
-                                                      height="24"
-                                                      stroke="currentColor"
-                                                      stroke-width="2"
-                                                      fill="none"
-                                                      stroke-linecap="round"
-                                                      stroke-linejoin="round"
-                                                      class="css-i6dzq1"
-                                                    >
+                                                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                                                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                                       <polyline points="22,6 12,13 2,6"></polyline>
                                                     </svg>
@@ -1222,11 +890,7 @@ export default function Request() {
                                     id="click-text"
                                   >
                                     <div
-                                      className={
-                                        filterOpen
-                                          ? "pointer mobile-view-flex-end-side pointer-mobile-opacity"
-                                          : "pointer mobile-view-flex-end-side "
-                                      }
+                                      className={filterOpen ? "pointer mobile-view-flex-end-side pointer-mobile-opacity" : "pointer mobile-view-flex-end-side "}
                                       style={{ zIndex: "99" }}
                                       onClick={() => {
                                         setIdComparePopup(allQuestion?._id);
@@ -1251,50 +915,20 @@ export default function Request() {
                                         <circle cx="12" cy="19" r="1"></circle>
                                       </svg>
                                     </div>
-                                    <div
-                                      className={
-                                        allQuestion?._id === idComparePopup
-                                          ? "answer-edit-delete-dropdwon-design dropdown-show"
-                                          : "answer-edit-delete-dropdwon-design dropdown-hidden"
-                                      }
-                                    >
+                                    <div className={allQuestion?._id === idComparePopup ? "answer-edit-delete-dropdwon-design dropdown-show" : "answer-edit-delete-dropdwon-design dropdown-hidden"}>
                                       <div className="dropdown-cus-design">
                                         <div
                                           className="edit-list-alignment"
                                           onClick={() => {
-                                            setOpenModalRemoveQuestionIReceived(
-                                              !openModalRemoveQuestionIReceived
-                                            );
-                                            setIdForRemoveQuestionIReceived(
-                                              allQuestion?._id
-                                            );
+                                            setOpenModalRemoveQuestionIReceived(!openModalRemoveQuestionIReceived);
+                                            setIdForRemoveQuestionIReceived(allQuestion?._id);
                                             setIdComparePopup(false);
                                           }}
                                         >
                                           <div className="edit-icon">
-                                            <svg
-                                              viewBox="0 0 24 24"
-                                              width="24"
-                                              height="24"
-                                              stroke="currentColor"
-                                              stroke-width="2"
-                                              fill="none"
-                                              stroke-linecap="round"
-                                              stroke-linejoin="round"
-                                              class="css-i6dzq1"
-                                            >
-                                              <line
-                                                x1="18"
-                                                y1="6"
-                                                x2="6"
-                                                y2="18"
-                                              ></line>
-                                              <line
-                                                x1="6"
-                                                y1="6"
-                                                x2="18"
-                                                y2="18"
-                                              ></line>
+                                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                                              <line x1="18" y1="6" x2="6" y2="18"></line>
+                                              <line x1="6" y1="6" x2="18" y2="18"></line>
                                             </svg>
                                           </div>
                                           <div className="edit-text">
@@ -1304,32 +938,15 @@ export default function Request() {
                                         <div
                                           className="edit-list-alignment"
                                           onClick={() => {
-                                            setOpenReportAbuseModal(
-                                              !openReportAbuseModal
-                                            );
+                                            setOpenReportAbuseModal(!openReportAbuseModal);
                                             setIdReportAbuse(allQuestion?._id);
                                             setIdComparePopup(false);
                                           }}
                                         >
                                           <div className="edit-icon">
-                                            <svg
-                                              viewBox="0 0 24 24"
-                                              width="24"
-                                              height="24"
-                                              stroke="currentColor"
-                                              stroke-width="2"
-                                              fill="none"
-                                              stroke-linecap="round"
-                                              stroke-linejoin="round"
-                                              class="css-i6dzq1"
-                                            >
+                                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                                               <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
-                                              <line
-                                                x1="4"
-                                                y1="22"
-                                                x2="4"
-                                                y2="15"
-                                              ></line>
+                                              <line x1="4" y1="22" x2="4" y2="15"></line>
                                             </svg>
                                           </div>
                                           <div className="edit-text">
@@ -1369,17 +986,7 @@ export default function Request() {
                     setSenderId();
                   }}
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="css-i6dzq1"
-                  >
+                  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
@@ -1439,27 +1046,14 @@ export default function Request() {
                   setSenderId();
                 }}
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="css-i6dzq1"
-                >
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
               </div>
             </div>
             <div className="modal-body1">
-              <p>
-                Let the admins know what's wrong with this question. No one else
-                will see your name or the content of this report.
-              </p>
+              <p>Let the admins know what's wrong with this question. No one else will see your name or the content of this report.</p>
               <div className="select-button-style">
                 <input
                   type="radio"
@@ -1507,9 +1101,7 @@ export default function Request() {
                     setInputForReportAbuse(e.target.value);
                   }}
                 />
-                <label for="html">
-                  I dont think it should be on the platform
-                </label>
+                <label for="html">I dont think it should be on the platform</label>
               </div>
             </div>
             <div className="modal-footer">
@@ -1549,17 +1141,7 @@ export default function Request() {
                   setIdForDeleteAskedQuestion();
                 }}
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="css-i6dzq1"
-                >
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
@@ -1596,10 +1178,7 @@ export default function Request() {
       ) : null}
       {openmodalDeleteAnswerLater ? (
         <div className="content-modal">
-          <div
-            className="modal-center-align animate__animated animate__backInDown wow"
-            data-wow-offset="200"
-          >
+          <div className="modal-center-align animate__animated animate__backInDown wow" data-wow-offset="200">
             <div className="modal-header">
               <p>Remove Question</p>
               <div
@@ -1609,17 +1188,7 @@ export default function Request() {
                   setIdForRemove();
                 }}
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="css-i6dzq1"
-                >
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
@@ -1627,9 +1196,7 @@ export default function Request() {
             </div>
             <div className="modal-body">
               <div className="form-group-modal">
-                <p className="delete-text">
-                  Sure you want to remove this question?
-                </p>
+                <p className="delete-text">Sure you want to remove this question?</p>
               </div>
             </div>
             <div className="modal-footer">
@@ -1665,23 +1232,11 @@ export default function Request() {
               <div
                 className="close-icon"
                 onClick={() => {
-                  setOpenModalRemoveQuestionIReceived(
-                    !openModalRemoveQuestionIReceived
-                  );
+                  setOpenModalRemoveQuestionIReceived(!openModalRemoveQuestionIReceived);
                   setIdForRemoveQuestionIReceived();
                 }}
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="css-i6dzq1"
-                >
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
@@ -1689,9 +1244,7 @@ export default function Request() {
             </div>
             <div className="modal-body">
               <div className="form-group-modal">
-                <p className="delete-text">
-                  Sure you want to remove this question?
-                </p>
+                <p className="delete-text">Sure you want to remove this question?</p>
               </div>
             </div>
             <div className="modal-footer">
@@ -1699,9 +1252,7 @@ export default function Request() {
                 <button
                   className="cancel-button"
                   onClick={() => {
-                    setOpenModalRemoveQuestionIReceived(
-                      !openModalRemoveQuestionIReceived
-                    );
+                    setOpenModalRemoveQuestionIReceived(!openModalRemoveQuestionIReceived);
                     setIdForRemoveQuestionIReceived();
                   }}
                 >
@@ -1725,15 +1276,10 @@ export default function Request() {
         <div className="answer-later-design">
           <div className="white-modal-design">
             <div className="modal-body">
-              <p>
-                The Response Count is the number of Public and Author-View-Only
-                responses. Only Public Responses are Visible to you.
-              </p>
+              <p>The Response Count is the number of Public and Author-View-Only responses. Only Public Responses are Visible to you.</p>
             </div>
             <div className="modal-footer-button">
-              <button onClick={() => setOpenAnswerModal(!openAnswerModal)}>
-                Close
-              </button>
+              <button onClick={() => setOpenAnswerModal(!openAnswerModal)}>Close</button>
             </div>
           </div>
         </div>

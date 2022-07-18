@@ -29,8 +29,8 @@ import useMyquery from "./useMyquery";
 import { DataLoaded } from "../../App";
 
 export default function MyQuery() {
-  const { answer, myquery, request, answerLaterUser,FilterData } = useContext(DataLoaded);
-  const [ filterOpen , setFilterOpen ] = FilterData;
+  const { answer, myquery, request, answerLaterUser, FilterData } = useContext(DataLoaded);
+  const [filterOpen, setFilterOpen] = FilterData;
 
   const [myQueryData, setMyQueryData] = myquery;
   const [requestData, setRequestData] = request;
@@ -659,7 +659,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -669,7 +669,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -679,7 +679,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -689,7 +689,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -699,7 +699,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -739,11 +739,11 @@ export default function MyQuery() {
                               color="#333"
                               height={25}
                               width={25}
-                              // visible={false}
+                            // visible={false}
                             />
                           </div>
                         }
-                        // endMessage={<EndMsg />}
+                      // endMessage={<EndMsg />}
                       >
                         {allReceivedQuestion?.questions?.map((allQuestion) => {
                           return (
@@ -756,7 +756,7 @@ export default function MyQuery() {
                                       setIdComparePopup(0);
                                     }}
                                   >
-                                    <div className={filterOpen ? "profile-grid profile-grid-filter-z-index" :"profile-grid"}>
+                                    <div className={filterOpen ? "profile-grid profile-grid-filter-z-index" : "profile-grid"}>
                                       <div className="profile-grid-items">
                                         <div className="profile-image">
                                           <div className="popover__wrapper">
@@ -764,179 +764,182 @@ export default function MyQuery() {
                                               className=""
                                               src={
                                                 allQuestion?.displayProfile ===
-                                                true
+                                                  true
                                                   ? allQuestion?.createdBy
-                                                      ?.profileImage
+                                                    ?.profileImage
                                                   : ProfileImg
                                               }
                                             />
                                             {allQuestion?.displayProfile ===
                                               true && (
-                                              <div class="popover__content">
-                                                <div class="card is-ad mb-0 no-border">
-                                                  <div class="card-flex friend-card aftershimmer">
-                                                    <div class="friend-info">
-                                                      <div class="pop-up-top-part">
-                                                        <p class="mb-0 font-size-25 text-white">
-                                                          {
-                                                            allQuestion
-                                                              ?.createdBy
-                                                              ?.currentRole
-                                                          }
-                                                        </p>
-                                                        <p class="font-size-20 text-white">
-                                                          <span>
-                                                            <svg
-                                                              viewBox="0 0 24 24"
-                                                              width="20"
-                                                              height="20"
-                                                              stroke="currentColor"
-                                                              stroke-width="2"
-                                                              fill="none"
-                                                              stroke-linecap="round"
-                                                              stroke-linejoin="round"
-                                                              class="css-i6dzq1 text-white"
-                                                            >
-                                                              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                                              <circle
-                                                                cx="12"
-                                                                cy="10"
-                                                                r="3"
-                                                              ></circle>
-                                                            </svg>{" "}
-                                                          </span>
-                                                        </p>
-                                                      </div>
-                                                      <span class="user-name-left-side">
-                                                        {allQuestion?.createdBy?.subject?.map(
-                                                          (sub) => (
-                                                            <span class="badge badge-light">
-                                                              {sub}
+                                                <div class="popover__content">
+                                                  <div class="card is-ad mb-0 no-border">
+                                                    <div class="card-flex friend-card aftershimmer">
+                                                      <div class="friend-info">
+                                                        <div class="pop-up-top-part">
+                                                          <p class="mb-0 font-size-25 text-white">
+                                                            {
+                                                              allQuestion
+                                                                ?.createdBy
+                                                                ?.currentRole
+                                                            }
+                                                          </p>
+                                                          <p class="font-size-20 text-white">
+                                                            <span>
+                                                              <svg
+                                                                viewBox="0 0 24 24"
+                                                                width="20"
+                                                                height="20"
+                                                                stroke="currentColor"
+                                                                stroke-width="2"
+                                                                fill="none"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                class="css-i6dzq1 text-white"
+                                                              >
+                                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                                <circle
+                                                                  cx="12"
+                                                                  cy="10"
+                                                                  r="3"
+                                                                ></circle>
+                                                              </svg>{" "}
                                                             </span>
-                                                          )
-                                                        )}
-                                                      </span>
-                                                    </div>
+                                                          </p>
+                                                        </div>
+                                                        <span class="user-name-left-side">
+                                                          {allQuestion?.createdBy?.subject?.map(
+                                                            (sub) => (
+                                                              <span class="badge badge-light">
+                                                                {sub}
+                                                              </span>
+                                                            )
+                                                          )}
+                                                        </span>
+                                                      </div>
 
-                                                    <div class="display-flex">
-                                                      <NavLink
-                                                        to={`/view-profile/${allQuestion?.createdBy?._id}`}
-                                                        class="btn view-profile-btn mr-auto"
-                                                      >
-                                                        {" "}
-                                                        View Profile{" "}
-                                                      </NavLink>
-                                                      {allQuestion?.allowConnectionRequest ===
-                                                      true ? (
-                                                        allQuestion?.isFriend ===
-                                                        "false" ? (
-                                                          <div
-                                                            className="abc"
-                                                            onClick={() => {
-                                                              setOpenModal(
-                                                                !openmodal
-                                                              );
-                                                              setSenderId(
-                                                                allQuestion
-                                                                  ?.createdBy
-                                                                  ?._id
-                                                              );
-                                                            }}
-                                                          >
-                                                            <svg
-                                                              viewBox="0 0 24 24"
-                                                              width="18"
-                                                              height="18"
-                                                              stroke="currentColor"
-                                                              stroke-width="2"
-                                                              fill="none"
-                                                              stroke-linecap="round"
-                                                              stroke-linejoin="round"
-                                                              class="css-i6dzq1"
+                                                      <div class="display-flex">
+                                                        <NavLink
+                                                          to={`/view-profile/${allQuestion?.createdBy?._id}`}
+                                                          class="btn view-profile-btn mr-auto"
+                                                        >
+                                                          {" "}
+                                                          View Profile{" "}
+                                                        </NavLink>
+                                                        {allQuestion?.allowConnectionRequest ===
+                                                          true ? (
+                                                          allQuestion?.isFriend ===
+                                                            "false" ? (
+                                                            <div
+                                                              className="abc"
+                                                              onClick={() => {
+                                                                setOpenModal(
+                                                                  !openmodal
+                                                                );
+                                                                setSenderId(
+                                                                  allQuestion
+                                                                    ?.createdBy
+                                                                    ?._id
+                                                                );
+                                                              }}
                                                             >
-                                                              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                                              <polyline points="22,6 12,13 2,6"></polyline>
-                                                            </svg>
-                                                          </div>
-                                                        ) : allQuestion?.isFriend ===
-                                                          "true" ? (
-                                                          <div
-                                                            className="abc"
-                                                            onClick={(e) => {
-                                                              history.push({
-                                                                pathname:
-                                                                  "/chat",
-                                                                state: {
-                                                                  user_id:
-                                                                    allQuestion
-                                                                      ?.createdBy
-                                                                      ?._id,
-                                                                },
-                                                              });
-                                                            }}
-                                                          >
-                                                            <svg
-                                                              viewBox="0 0 24 24"
-                                                              width="18"
-                                                              height="18"
-                                                              stroke="currentColor"
-                                                              stroke-width="2"
-                                                              fill="none"
-                                                              stroke-linecap="round"
-                                                              stroke-linejoin="round"
-                                                              class="css-i6dzq1"
+                                                              <svg
+                                                                viewBox="0 0 24 24"
+                                                                width="18"
+                                                                height="18"
+                                                                stroke="currentColor"
+                                                                stroke-width="2"
+                                                                fill="none"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                class="css-i6dzq1"
+                                                              >
+                                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                                <polyline points="22,6 12,13 2,6"></polyline>
+                                                              </svg>
+                                                            </div>
+                                                          ) : allQuestion?.isFriend ===
+                                                            "true" ? (
+                                                            <div
+                                                              className="abc"
+                                                              onClick={(e) => {
+                                                                history.push({
+                                                                  pathname:
+                                                                    "/chat",
+                                                                  state: {
+                                                                    user_id:
+                                                                      allQuestion
+                                                                        ?.createdBy
+                                                                        ?._id,
+                                                                  },
+                                                                });
+                                                              }}
                                                             >
-                                                              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                                              <polyline points="22,6 12,13 2,6"></polyline>
-                                                            </svg>
-                                                          </div>
-                                                        ) : allQuestion?.isFriend ===
-                                                          "sent" ? (
-                                                          ""
+                                                              <svg
+                                                                viewBox="0 0 24 24"
+                                                                width="18"
+                                                                height="18"
+                                                                stroke="currentColor"
+                                                                stroke-width="2"
+                                                                fill="none"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                class="css-i6dzq1"
+                                                              >
+                                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                                <polyline points="22,6 12,13 2,6"></polyline>
+                                                              </svg>
+                                                            </div>
+                                                          ) : allQuestion?.isFriend ===
+                                                            "sent" ? (
+                                                            ""
+                                                          ) : (
+                                                            ""
+                                                          )
                                                         ) : (
                                                           ""
-                                                        )
-                                                      ) : (
-                                                        ""
-                                                      )}
+                                                        )}
+                                                      </div>
                                                     </div>
                                                   </div>
                                                 </div>
-                                              </div>
-                                            )}
+                                              )}
                                           </div>
+                                          <div className="upvote"><h1>vote</h1></div>
+                                          <div className="upvote"><h1>vote</h1></div>
+
                                         </div>
                                       </div>
 
                                       <div className="profile-grid-items">
                                         {allQuestion?.displayProfile === true &&
-                                        allQuestion?.filter?.map((f) => {
-                                          console.log("-11111111111111", f);
-                                          if (
-                                            f?.filterId ==
-                                            "619e07b7641d2f00f887ec96"
-                                          ) {
-                                            return f?.options?.map((o) => {
-                                              if (
-                                                userData?.subject[0] ==
+                                          allQuestion?.filter?.map((f) => {
+                                            console.log("-11111111111111", f);
+                                            if (
+                                              f?.filterId ==
+                                              "619e07b7641d2f00f887ec96"
+                                            ) {
+                                              return f?.options?.map((o) => {
+                                                if (
+                                                  userData?.subject[0] ==
                                                   o?.optionName ||
-                                                userData?.subject[1] ==
+                                                  userData?.subject[1] ==
                                                   o?.optionName ||
-                                                userData?.subject[2] ==
+                                                  userData?.subject[2] ==
                                                   o?.optionName ||
-                                                userData?.subject[3] ==
+                                                  userData?.subject[3] ==
                                                   o?.optionName
-                                              ) {
-                                                return o?.optionName;
-                                              }
-                                            });
-                                          }
-                                        }).length > 0 ? (
+                                                ) {
+                                                  return o?.optionName;
+                                                }
+                                              });
+                                            }
+                                          }).length > 0 ? (
                                           <span class="borderlefttext">
                                             {allQuestion?.filter?.map((f) => {
                                               return (
                                                 f?.filterId ==
-                                                  "619e07b7641d2f00f887ec96" &&
+                                                "619e07b7641d2f00f887ec96" &&
                                                 f?.options?.map((opt) => {
                                                   return (
                                                     <span class="category">
@@ -1020,9 +1023,9 @@ export default function MyQuery() {
                                             <span>Answer Later</span>
                                           </button>
                                           {allQuestion?.allowConnectionRequest ===
-                                          true ? (
+                                            true ? (
                                             allQuestion?.isFriend ===
-                                            "pending" ? (
+                                              "pending" ? (
                                               <>
                                                 <button>
                                                   <NavLink to={`/connections`}>
@@ -1050,7 +1053,7 @@ export default function MyQuery() {
                                                 </button>
                                               </>
                                             ) : allQuestion?.isFriend ==
-                                                "false" ||
+                                              "false" ||
                                               allQuestion?.isFriend == false ? (
                                               <>
                                                 <button
@@ -1342,7 +1345,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1352,7 +1355,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1362,7 +1365,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1372,7 +1375,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1382,7 +1385,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1424,7 +1427,7 @@ export default function MyQuery() {
                             />
                           </div>
                         }
-                        // endMessage={<EndMsg />}
+                      // endMessage={<EndMsg />}
                       >
                         {allReceivedQuestion?.questions?.map(
                           (allQuestion, key) => {
@@ -1446,162 +1449,162 @@ export default function MyQuery() {
                                                 className=""
                                                 src={
                                                   allQuestion?.displayProfile ===
-                                                  true
+                                                    true
                                                     ? allQuestion?.createdBy
-                                                        ?.profileImage
+                                                      ?.profileImage
                                                     : ProfileImg
                                                 }
                                                 alt="profile"
-                                                // src={ProfileImg}
+                                              // src={ProfileImg}
                                               />
                                               {allQuestion?.displayProfile ===
                                                 true && (
-                                                <div class="popover__content">
-                                                  <div class="card is-ad mb-0 no-border">
-                                                    <div class="card-flex friend-card aftershimmer">
-                                                      <div class="friend-info">
-                                                        <div class="pop-up-top-part">
-                                                          <p class="mb-0 font-size-25 text-white">
-                                                            {
-                                                              allQuestion
-                                                                ?.createdBy
-                                                                ?.currentRole
-                                                            }
-                                                          </p>
-                                                          <p class="font-size-20 text-white">
-                                                            <span>
-                                                              <svg
-                                                                viewBox="0 0 24 24"
-                                                                width="20"
-                                                                height="20"
-                                                                stroke="currentColor"
-                                                                stroke-width="2"
-                                                                fill="none"
-                                                                stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                class="css-i6dzq1 text-white"
-                                                              >
-                                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                                                <circle
-                                                                  cx="12"
-                                                                  cy="10"
-                                                                  r="3"
-                                                                ></circle>
-                                                              </svg>{" "}
-                                                            </span>
-                                                          </p>
-                                                        </div>
-                                                        <span class="user-name-left-side">
-                                                          {allQuestion?.createdBy?.subject?.map(
-                                                            (sub) => (
-                                                              <span class="badge badge-light">
-                                                                {sub}
+                                                  <div class="popover__content">
+                                                    <div class="card is-ad mb-0 no-border">
+                                                      <div class="card-flex friend-card aftershimmer">
+                                                        <div class="friend-info">
+                                                          <div class="pop-up-top-part">
+                                                            <p class="mb-0 font-size-25 text-white">
+                                                              {
+                                                                allQuestion
+                                                                  ?.createdBy
+                                                                  ?.currentRole
+                                                              }
+                                                            </p>
+                                                            <p class="font-size-20 text-white">
+                                                              <span>
+                                                                <svg
+                                                                  viewBox="0 0 24 24"
+                                                                  width="20"
+                                                                  height="20"
+                                                                  stroke="currentColor"
+                                                                  stroke-width="2"
+                                                                  fill="none"
+                                                                  stroke-linecap="round"
+                                                                  stroke-linejoin="round"
+                                                                  class="css-i6dzq1 text-white"
+                                                                >
+                                                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                                  <circle
+                                                                    cx="12"
+                                                                    cy="10"
+                                                                    r="3"
+                                                                  ></circle>
+                                                                </svg>{" "}
                                                               </span>
+                                                            </p>
+                                                          </div>
+                                                          <span class="user-name-left-side">
+                                                            {allQuestion?.createdBy?.subject?.map(
+                                                              (sub) => (
+                                                                <span class="badge badge-light">
+                                                                  {sub}
+                                                                </span>
+                                                              )
+                                                            )}
+                                                          </span>
+                                                        </div>
+
+                                                        <div class="display-flex">
+                                                          <NavLink
+                                                            to={`/view-profile/${allQuestion?.createdBy?._id}`}
+                                                            class="btn view-profile-btn mr-auto"
+                                                          >
+                                                            {" "}
+                                                            View Profile{" "}
+                                                          </NavLink>
+
+                                                          {allQuestion?.allowConnectionRequest ===
+                                                            true ? (
+                                                            allQuestion?.isFriend ===
+                                                              "false" ? (
+                                                              <div
+                                                                className="abc"
+                                                                onClick={() => {
+                                                                  setOpenModal(
+                                                                    !openmodal
+                                                                  );
+                                                                  setSenderId(
+                                                                    allQuestion
+                                                                      ?.createdBy
+                                                                      ?._id
+                                                                  );
+                                                                }}
+                                                              >
+                                                                <img
+                                                                  src={
+                                                                    messageIcons
+                                                                  }
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                            ) : allQuestion?.isFriend ===
+                                                              "true" ? (
+                                                              <div
+                                                                className="abc"
+                                                                onClick={(e) => {
+                                                                  history.push({
+                                                                    pathname:
+                                                                      "/chat",
+                                                                    state: {
+                                                                      user_id:
+                                                                        allQuestion
+                                                                          ?.createdBy
+                                                                          ?._id,
+                                                                    },
+                                                                  });
+                                                                }}
+                                                              >
+                                                                <img
+                                                                  src={
+                                                                    messageIcons
+                                                                  }
+                                                                  alt=""
+                                                                />
+                                                              </div>
+                                                            ) : allQuestion?.isFriend ===
+                                                              "sent" ? (
+                                                              ""
+                                                            ) : (
+                                                              ""
                                                             )
-                                                          )}
-                                                        </span>
-                                                      </div>
-
-                                                      <div class="display-flex">
-                                                        <NavLink
-                                                          to={`/view-profile/${allQuestion?.createdBy?._id}`}
-                                                          class="btn view-profile-btn mr-auto"
-                                                        >
-                                                          {" "}
-                                                          View Profile{" "}
-                                                        </NavLink>
-
-                                                        {allQuestion?.allowConnectionRequest ===
-                                                        true ? (
-                                                          allQuestion?.isFriend ===
-                                                          "false" ? (
-                                                            <div
-                                                              className="abc"
-                                                              onClick={() => {
-                                                                setOpenModal(
-                                                                  !openmodal
-                                                                );
-                                                                setSenderId(
-                                                                  allQuestion
-                                                                    ?.createdBy
-                                                                    ?._id
-                                                                );
-                                                              }}
-                                                            >
-                                                              <img
-                                                                src={
-                                                                  messageIcons
-                                                                }
-                                                                alt=""
-                                                              />
-                                                            </div>
-                                                          ) : allQuestion?.isFriend ===
-                                                            "true" ? (
-                                                            <div
-                                                              className="abc"
-                                                              onClick={(e) => {
-                                                                history.push({
-                                                                  pathname:
-                                                                    "/chat",
-                                                                  state: {
-                                                                    user_id:
-                                                                      allQuestion
-                                                                        ?.createdBy
-                                                                        ?._id,
-                                                                  },
-                                                                });
-                                                              }}
-                                                            >
-                                                              <img
-                                                                src={
-                                                                  messageIcons
-                                                                }
-                                                                alt=""
-                                                              />
-                                                            </div>
-                                                          ) : allQuestion?.isFriend ===
-                                                            "sent" ? (
-                                                            ""
                                                           ) : (
                                                             ""
-                                                          )
-                                                        ) : (
-                                                          ""
-                                                        )}
+                                                          )}
+                                                        </div>
                                                       </div>
                                                     </div>
                                                   </div>
-                                                </div>
-                                              )}
+                                                )}
                                             </div>
                                           </div>
                                         </div>
                                         <div className="profile-grid-items">
                                           {allQuestion?.displayProfile ===
                                             true &&
-                                          allQuestion?.filter?.map((f) => {
-                                            if (f?.filterId == "") {
-                                              return f?.options?.map((o) => {
-                                                if (
-                                                  userData?.subject[0] ==
+                                            allQuestion?.filter?.map((f) => {
+                                              if (f?.filterId == "") {
+                                                return f?.options?.map((o) => {
+                                                  if (
+                                                    userData?.subject[0] ==
                                                     o?.optionName ||
-                                                  userData?.subject[1] ==
+                                                    userData?.subject[1] ==
                                                     o?.optionName ||
-                                                  userData?.subject[2] ==
+                                                    userData?.subject[2] ==
                                                     o?.optionName ||
-                                                  userData?.subject[3] ==
+                                                    userData?.subject[3] ==
                                                     o?.optionName
-                                                ) {
-                                                  return o?.optionName;
-                                                }
-                                              });
-                                            }
-                                          }).length > 0 ? (
+                                                  ) {
+                                                    return o?.optionName;
+                                                  }
+                                                });
+                                              }
+                                            }).length > 0 ? (
                                             <span class="borderlefttext">
                                               {allQuestion?.filter?.map((f) => {
                                                 return (
                                                   f?.filterId ==
-                                                    "619e07b7641d2f00f887ec96" &&
+                                                  "619e07b7641d2f00f887ec96" &&
                                                   f?.options?.map((opt) => {
                                                     return (
                                                       <span class="category">
@@ -1658,9 +1661,9 @@ export default function MyQuery() {
                                               </button>
                                             </NavLink>
                                             {allQuestion?.allowConnectionRequest ===
-                                            true ? (
+                                              true ? (
                                               allQuestion?.isFriend ===
-                                              "pending" ? (
+                                                "pending" ? (
                                                 <>
                                                   <button>
                                                     <NavLink
@@ -1913,7 +1916,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1923,7 +1926,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1933,7 +1936,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1943,7 +1946,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1953,7 +1956,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -1997,7 +2000,7 @@ export default function MyQuery() {
                             />
                           </div>
                         }
-                        // endMessage={<EndMsg />}
+                      // endMessage={<EndMsg />}
                       >
                         {allReceivedQuestion?.questions?.map((allQuestion) => {
                           return (
@@ -2018,159 +2021,159 @@ export default function MyQuery() {
                                               className=""
                                               src={
                                                 allQuestion?.displayProfile ===
-                                                true
+                                                  true
                                                   ? allQuestion?.createdBy
-                                                      ?.profileImage
+                                                    ?.profileImage
                                                   : ProfileImg
                                               }
                                               alt="img"
                                             />
                                             {allQuestion?.displayProfile ===
                                               true && (
-                                              <div class="popover__content">
-                                                <div class="card is-ad mb-0 no-border">
-                                                  <div class="card-flex friend-card aftershimmer">
-                                                    <div class="friend-info">
-                                                      <div class="pop-up-top-part">
-                                                        <p class="mb-0 font-size-25 text-white">
-                                                          {
-                                                            allQuestion
-                                                              ?.createdBy
-                                                              ?.currentRole
-                                                          }
-                                                        </p>
-                                                        <p class="font-size-20 text-white">
-                                                          <span>
-                                                            <svg
-                                                              viewBox="0 0 24 24"
-                                                              width="20"
-                                                              height="20"
-                                                              stroke="currentColor"
-                                                              stroke-width="2"
-                                                              fill="none"
-                                                              stroke-linecap="round"
-                                                              stroke-linejoin="round"
-                                                              class="css-i6dzq1 text-white"
-                                                            >
-                                                              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                                              <circle
-                                                                cx="12"
-                                                                cy="10"
-                                                                r="3"
-                                                              ></circle>
-                                                            </svg>{" "}
-                                                          </span>
-                                                        </p>
-                                                      </div>
-                                                      <span class="user-name-left-side">
-                                                        {allQuestion?.createdBy?.subject?.map(
-                                                          (sub) => (
-                                                            <span class="badge badge-light">
-                                                              {sub}
+                                                <div class="popover__content">
+                                                  <div class="card is-ad mb-0 no-border">
+                                                    <div class="card-flex friend-card aftershimmer">
+                                                      <div class="friend-info">
+                                                        <div class="pop-up-top-part">
+                                                          <p class="mb-0 font-size-25 text-white">
+                                                            {
+                                                              allQuestion
+                                                                ?.createdBy
+                                                                ?.currentRole
+                                                            }
+                                                          </p>
+                                                          <p class="font-size-20 text-white">
+                                                            <span>
+                                                              <svg
+                                                                viewBox="0 0 24 24"
+                                                                width="20"
+                                                                height="20"
+                                                                stroke="currentColor"
+                                                                stroke-width="2"
+                                                                fill="none"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                class="css-i6dzq1 text-white"
+                                                              >
+                                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                                <circle
+                                                                  cx="12"
+                                                                  cy="10"
+                                                                  r="3"
+                                                                ></circle>
+                                                              </svg>{" "}
                                                             </span>
+                                                          </p>
+                                                        </div>
+                                                        <span class="user-name-left-side">
+                                                          {allQuestion?.createdBy?.subject?.map(
+                                                            (sub) => (
+                                                              <span class="badge badge-light">
+                                                                {sub}
+                                                              </span>
+                                                            )
+                                                          )}
+                                                        </span>
+                                                      </div>
+
+                                                      <div class="display-flex">
+                                                        <NavLink
+                                                          to={`/view-profile/${allQuestion?.createdBy?._id}`}
+                                                          class="btn view-profile-btn mr-auto"
+                                                        >
+                                                          {" "}
+                                                          View Profile{" "}
+                                                        </NavLink>
+
+                                                        {allQuestion?.allowConnectionRequest ===
+                                                          true ? (
+                                                          allQuestion?.isFriend ===
+                                                            "false" ? (
+                                                            <div
+                                                              className="abc"
+                                                              onClick={() => {
+                                                                setOpenModal(
+                                                                  !openmodal
+                                                                );
+                                                                setSenderId(
+                                                                  allQuestion
+                                                                    ?.createdBy
+                                                                    ?._id
+                                                                );
+                                                              }}
+                                                            >
+                                                              <img
+                                                                src={messageIcons}
+                                                                alt=""
+                                                              />
+                                                            </div>
+                                                          ) : allQuestion?.isFriend ===
+                                                            "true" ? (
+                                                            <div
+                                                              className="abc"
+                                                              onClick={(e) => {
+                                                                history.push({
+                                                                  pathname:
+                                                                    "/chat",
+                                                                  state: {
+                                                                    user_id:
+                                                                      allQuestion
+                                                                        ?.createdBy
+                                                                        ?._id,
+                                                                  },
+                                                                });
+                                                              }}
+                                                            >
+                                                              <img
+                                                                src={messageIcons}
+                                                                alt=""
+                                                              />
+                                                            </div>
+                                                          ) : allQuestion?.isFriend ===
+                                                            "sent" ? (
+                                                            ""
+                                                          ) : (
+                                                            ""
                                                           )
-                                                        )}
-                                                      </span>
-                                                    </div>
-
-                                                    <div class="display-flex">
-                                                      <NavLink
-                                                        to={`/view-profile/${allQuestion?.createdBy?._id}`}
-                                                        class="btn view-profile-btn mr-auto"
-                                                      >
-                                                        {" "}
-                                                        View Profile{" "}
-                                                      </NavLink>
-
-                                                      {allQuestion?.allowConnectionRequest ===
-                                                      true ? (
-                                                        allQuestion?.isFriend ===
-                                                        "false" ? (
-                                                          <div
-                                                            className="abc"
-                                                            onClick={() => {
-                                                              setOpenModal(
-                                                                !openmodal
-                                                              );
-                                                              setSenderId(
-                                                                allQuestion
-                                                                  ?.createdBy
-                                                                  ?._id
-                                                              );
-                                                            }}
-                                                          >
-                                                            <img
-                                                              src={messageIcons}
-                                                              alt=""
-                                                            />
-                                                          </div>
-                                                        ) : allQuestion?.isFriend ===
-                                                          "true" ? (
-                                                          <div
-                                                            className="abc"
-                                                            onClick={(e) => {
-                                                              history.push({
-                                                                pathname:
-                                                                  "/chat",
-                                                                state: {
-                                                                  user_id:
-                                                                    allQuestion
-                                                                      ?.createdBy
-                                                                      ?._id,
-                                                                },
-                                                              });
-                                                            }}
-                                                          >
-                                                            <img
-                                                              src={messageIcons}
-                                                              alt=""
-                                                            />
-                                                          </div>
-                                                        ) : allQuestion?.isFriend ===
-                                                          "sent" ? (
-                                                          ""
                                                         ) : (
                                                           ""
-                                                        )
-                                                      ) : (
-                                                        ""
-                                                      )}
+                                                        )}
+                                                      </div>
                                                     </div>
                                                   </div>
                                                 </div>
-                                              </div>
-                                            )}
+                                              )}
                                           </div>
                                         </div>
                                       </div>
                                       <div className="profile-grid-items">
                                         {allQuestion?.displayProfile === true &&
-                                        allQuestion?.filter?.map((f) => {
-                                          if (
-                                            f?.filterId ==
-                                            "619e07b7641d2f00f887ec96"
-                                          ) {
-                                            return f?.options?.map((o) => {
-                                              if (
-                                                userData?.subject[0] ==
+                                          allQuestion?.filter?.map((f) => {
+                                            if (
+                                              f?.filterId ==
+                                              "619e07b7641d2f00f887ec96"
+                                            ) {
+                                              return f?.options?.map((o) => {
+                                                if (
+                                                  userData?.subject[0] ==
                                                   o?.optionName ||
-                                                userData?.subject[1] ==
+                                                  userData?.subject[1] ==
                                                   o?.optionName ||
-                                                userData?.subject[2] ==
+                                                  userData?.subject[2] ==
                                                   o?.optionName ||
-                                                userData?.subject[3] ==
+                                                  userData?.subject[3] ==
                                                   o?.optionName
-                                              ) {
-                                                return o?.optionName;
-                                              }
-                                            });
-                                          }
-                                        }).length > 0 ? (
+                                                ) {
+                                                  return o?.optionName;
+                                                }
+                                              });
+                                            }
+                                          }).length > 0 ? (
                                           <span class="borderlefttext">
                                             {allQuestion?.filter?.map((f) => {
                                               return (
                                                 f?.filterId ==
-                                                  "619e07b7641d2f00f887ec96" &&
+                                                "619e07b7641d2f00f887ec96" &&
                                                 f?.options?.map((opt) => {
                                                   return (
                                                     <span class="category">
@@ -2250,9 +2253,9 @@ export default function MyQuery() {
                                             <span>Connect</span>
                                           </button> */}
                                           {allQuestion?.allowConnectionRequest ===
-                                          true ? (
+                                            true ? (
                                             allQuestion?.isFriend ===
-                                            "pending" ? (
+                                              "pending" ? (
                                               <>
                                                 <button>
                                                   <NavLink to={`/connections`}>
@@ -2492,7 +2495,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -2502,7 +2505,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -2512,7 +2515,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -2522,7 +2525,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -2532,7 +2535,7 @@ export default function MyQuery() {
                         <div className="Skeleton-flex-align">
                           <Skeleton variant="circular" width={40} height={40} />
                           <div className="padding-left-loader">
-                            <Skeleton variant="text" style={{ width:"100%"}} height={25} />
+                            <Skeleton variant="text" style={{ width: "100%" }} height={25} />
                           </div>
                         </div>
                         <Skeleton variant="text" width={"60%"} height={25} />
@@ -2579,7 +2582,7 @@ export default function MyQuery() {
                             />
                           </div>
                         }
-                        // endMessage={<EndMsg />}
+                      // endMessage={<EndMsg />}
                       >
                         {allReceivedQuestion?.questions?.map((allQuestion) => {
                           return (
@@ -2656,22 +2659,22 @@ export default function MyQuery() {
                                       <div className="profile-grid-items">
                                         {allQuestion?.filter?.length > 0
                                           ? allQuestion?.filter?.map((f) => {
-                                              return (
-                                                f?.filterId ==
-                                                  "619e07b7641d2f00f887ec96" && (
-                                                  <span class="borderlefttext">
-                                                    {f?.options?.map((opt) => {
-                                                      return (
-                                                        <span class="category">
-                                                          {" "}
-                                                          {`${opt?.optionName}, `}
-                                                        </span>
-                                                      );
-                                                    })}
-                                                  </span>
-                                                )
-                                              );
-                                            })
+                                            return (
+                                              f?.filterId ==
+                                              "619e07b7641d2f00f887ec96" && (
+                                                <span class="borderlefttext">
+                                                  {f?.options?.map((opt) => {
+                                                    return (
+                                                      <span class="category">
+                                                        {" "}
+                                                        {`${opt?.optionName}, `}
+                                                      </span>
+                                                    );
+                                                  })}
+                                                </span>
+                                              )
+                                            );
+                                          })
                                           : ""}
 
                                         <h2>{allQuestion.question}</h2>

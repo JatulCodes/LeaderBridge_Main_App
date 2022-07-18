@@ -29,6 +29,8 @@ import useMyquery from "./useMyquery";
 import { DataLoaded } from "../../App";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 import { utc } from "moment";
+import upVote from "../../Assets/Images/up.png";
+import downVote from "../../Assets/Images/down.png";
 
 export default function Query() {
   const { answer, myquery, request, answerLaterUser, FilterData } =
@@ -569,7 +571,7 @@ export default function Query() {
                           />
                         </div>
                       }
-                      // endMessage={<EndMsg />}
+                    // endMessage={<EndMsg />}
                     >
                       {allReceivedQuestion?.questions?.map((allQuestion) => {
                         return (
@@ -584,9 +586,9 @@ export default function Query() {
                               <div className="card-child-grid">
                                 <div
                                   className="card-child-grid-items"
-                                  // onClick={() => {
-                                  //   setIdComparePopup(0);
-                                  // }}
+                                // onClick={() => {
+                                //   setIdComparePopup(0);
+                                // }}
                                 >
                                   <div
                                     className={
@@ -673,6 +675,11 @@ export default function Query() {
                                         </div>
                                         {/* </Tooltip> */}
                                       </div>
+                                      <div className="votes">
+                                        <img src={upVote} className="vote-icon" />
+                                        <div className="rating">1</div>
+                                        <img src={downVote} className="vote-icon" />
+                                      </div>
                                     </div>
                                     <div className="profile-grid-items">
                                       {console.log(
@@ -690,22 +697,22 @@ export default function Query() {
 
                                       {allQuestion?.filter?.length > 0
                                         ? allQuestion?.filter?.map((f) => {
-                                            return (
-                                              f?.filterId ==
-                                                "619e07b7641d2f00f887ec96" && (
-                                                <span class="borderlefttext">
-                                                  {f?.options?.map((opt) => {
-                                                    return (
-                                                      <span class="category">
-                                                        {" "}
-                                                        {`${opt?.optionName}, `}
-                                                      </span>
-                                                    );
-                                                  })}
-                                                </span>
-                                              )
-                                            );
-                                          })
+                                          return (
+                                            f?.filterId ==
+                                            "619e07b7641d2f00f887ec96" && (
+                                              <span class="borderlefttext">
+                                                {f?.options?.map((opt) => {
+                                                  return (
+                                                    <span class="category">
+                                                      {" "}
+                                                      {`${opt?.optionName}, `}
+                                                    </span>
+                                                  );
+                                                })}
+                                              </span>
+                                            )
+                                          );
+                                        })
                                         : ""}
 
                                       <h2>
@@ -757,99 +764,99 @@ export default function Query() {
                                               .utc()
                                               .fromNow() ==
                                               "a few seconds ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "1 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "2 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "3 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "4 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "5 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "6 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "7 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "8 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "9 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "10 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "11 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "12 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "13 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "14 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "15 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "16 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "17 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "18 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "19 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "20 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "21 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "22 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "23 hours ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "3 days ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "1 days ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "a day ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "2 days ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "4 days ago" ||
-                                            moment(
-                                              allQuestion.createdAt
-                                            ).fromNow() == "5 days ago"
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "1 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "2 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "3 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "4 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "5 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "6 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "7 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "8 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "9 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "10 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "11 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "12 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "13 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "14 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "15 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "16 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "17 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "18 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "19 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "20 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "21 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "22 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "23 hours ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "3 days ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "1 days ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "a day ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "2 days ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "4 days ago" ||
+                                              moment(
+                                                allQuestion.createdAt
+                                              ).fromNow() == "5 days ago"
                                               ? moment(allQuestion.createdAt)
-                                                  .utc()
-                                                  .fromNow()
+                                                .utc()
+                                                .fromNow()
                                               : moment(allQuestion.createdAt)
-                                                  .utc()
-                                                  .format("ll")}
+                                                .utc()
+                                                .format("ll")}
 
                                             {/* {moment(
                                               allQuestion.createdAt

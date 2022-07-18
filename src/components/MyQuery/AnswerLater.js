@@ -28,6 +28,8 @@ import ReceivedVideoCallScreen from "../Chat/ReceivedVideoCallScreen";
 import useMyquery from "./useMyquery";
 import { DataLoaded } from "../../App";
 import ReactReadMoreReadLess from "react-read-more-read-less";
+import upVote from "../../Assets/Images/up.png";
+import downVote from "../../Assets/Images/down.png";
 
 export default function MyQuery() {
   const { answer, myquery, request, answerLaterUser, FilterData } =
@@ -639,7 +641,7 @@ export default function MyQuery() {
                             />
                           </div>
                         }
-                        // endMessage={<EndMsg />}
+                      // endMessage={<EndMsg />}
                       >
                         {allReceivedQuestion?.questions?.map((allQuestion) => {
                           return (
@@ -661,169 +663,175 @@ export default function MyQuery() {
                                               className=""
                                               src={
                                                 allQuestion?.displayProfile ===
-                                                true
+                                                  true
                                                   ? allQuestion?.createdBy
-                                                      ?.profileImage
+                                                    ?.profileImage
                                                   : ProfileImg
                                               }
                                               alt="img"
                                             />
+
                                             {allQuestion?.displayProfile ===
                                               true && (
-                                              <div class="popover__content">
-                                                <div class="card is-ad mb-0 no-border">
-                                                  <div class="card-flex friend-card aftershimmer">
-                                                    <div class="friend-info">
-                                                      <div class="pop-up-top-part">
-                                                        <p class="mb-0 font-size-25 text-white">
-                                                          {
-                                                            allQuestion
-                                                              ?.createdBy
-                                                              ?.currentRole
-                                                          }
-                                                        </p>
-                                                        <p class="font-size-20 text-white">
-                                                          <span>
-                                                            <svg
-                                                              viewBox="0 0 24 24"
-                                                              width="20"
-                                                              height="20"
-                                                              stroke="currentColor"
-                                                              stroke-width="2"
-                                                              fill="none"
-                                                              stroke-linecap="round"
-                                                              stroke-linejoin="round"
-                                                              class="css-i6dzq1 text-white"
-                                                            >
-                                                              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                                              <circle
-                                                                cx="12"
-                                                                cy="10"
-                                                                r="3"
-                                                              ></circle>
-                                                            </svg>{" "}
-                                                          </span>
-                                                        </p>
-                                                      </div>
-                                                      <span class="user-name-left-side">
-                                                        {allQuestion?.createdBy?.subject?.map(
-                                                          (sub) => (
-                                                            <span class="badge badge-light">
-                                                              {sub}
+                                                <div class="popover__content">
+                                                  <div class="card is-ad mb-0 no-border">
+                                                    <div class="card-flex friend-card aftershimmer">
+                                                      <div class="friend-info">
+                                                        <div class="pop-up-top-part">
+                                                          <p class="mb-0 font-size-25 text-white">
+                                                            {
+                                                              allQuestion
+                                                                ?.createdBy
+                                                                ?.currentRole
+                                                            }
+                                                          </p>
+                                                          <p class="font-size-20 text-white">
+                                                            <span>
+                                                              <svg
+                                                                viewBox="0 0 24 24"
+                                                                width="20"
+                                                                height="20"
+                                                                stroke="currentColor"
+                                                                stroke-width="2"
+                                                                fill="none"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                class="css-i6dzq1 text-white"
+                                                              >
+                                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                                <circle
+                                                                  cx="12"
+                                                                  cy="10"
+                                                                  r="3"
+                                                                ></circle>
+                                                              </svg>{" "}
                                                             </span>
+                                                          </p>
+                                                        </div>
+                                                        <span class="user-name-left-side">
+                                                          {allQuestion?.createdBy?.subject?.map(
+                                                            (sub) => (
+                                                              <span class="badge badge-light">
+                                                                {sub}
+                                                              </span>
+                                                            )
+                                                          )}
+                                                        </span>
+                                                      </div>
+
+                                                      <div class="display-flex">
+                                                        <NavLink
+                                                          to={`/view-profile/${allQuestion?.createdBy?._id}`}
+                                                          class="btn view-profile-btn mr-auto"
+                                                        >
+                                                          {" "}
+                                                          View Profile{" "}
+                                                        </NavLink>
+
+                                                        {allQuestion?.allowConnectionRequest ===
+                                                          true ? (
+                                                          allQuestion?.isFriend ===
+                                                            "false" ? (
+                                                            <div
+                                                              className="abc"
+                                                              onClick={() => {
+                                                                setOpenModal(
+                                                                  !openmodal
+                                                                );
+                                                                setSenderId(
+                                                                  allQuestion
+                                                                    ?.createdBy
+                                                                    ?._id
+                                                                );
+                                                              }}
+                                                            >
+                                                              <img
+                                                                src={messageIcons}
+                                                                alt=""
+                                                              />
+                                                            </div>
+                                                          ) : allQuestion?.isFriend ===
+                                                            "true" ? (
+                                                            <div
+                                                              className="abc"
+                                                              onClick={(e) => {
+                                                                history.push({
+                                                                  pathname:
+                                                                    "/chat",
+                                                                  state: {
+                                                                    user_id:
+                                                                      allQuestion
+                                                                        ?.createdBy
+                                                                        ?._id,
+                                                                  },
+                                                                });
+                                                              }}
+                                                            >
+                                                              <img
+                                                                src={messageIcons}
+                                                                alt=""
+                                                              />
+                                                            </div>
+                                                          ) : allQuestion?.isFriend ===
+                                                            "sent" ? (
+                                                            ""
+                                                          ) : (
+                                                            ""
                                                           )
-                                                        )}
-                                                      </span>
-                                                    </div>
-
-                                                    <div class="display-flex">
-                                                      <NavLink
-                                                        to={`/view-profile/${allQuestion?.createdBy?._id}`}
-                                                        class="btn view-profile-btn mr-auto"
-                                                      >
-                                                        {" "}
-                                                        View Profile{" "}
-                                                      </NavLink>
-
-                                                      {allQuestion?.allowConnectionRequest ===
-                                                      true ? (
-                                                        allQuestion?.isFriend ===
-                                                        "false" ? (
-                                                          <div
-                                                            className="abc"
-                                                            onClick={() => {
-                                                              setOpenModal(
-                                                                !openmodal
-                                                              );
-                                                              setSenderId(
-                                                                allQuestion
-                                                                  ?.createdBy
-                                                                  ?._id
-                                                              );
-                                                            }}
-                                                          >
-                                                            <img
-                                                              src={messageIcons}
-                                                              alt=""
-                                                            />
-                                                          </div>
-                                                        ) : allQuestion?.isFriend ===
-                                                          "true" ? (
-                                                          <div
-                                                            className="abc"
-                                                            onClick={(e) => {
-                                                              history.push({
-                                                                pathname:
-                                                                  "/chat",
-                                                                state: {
-                                                                  user_id:
-                                                                    allQuestion
-                                                                      ?.createdBy
-                                                                      ?._id,
-                                                                },
-                                                              });
-                                                            }}
-                                                          >
-                                                            <img
-                                                              src={messageIcons}
-                                                              alt=""
-                                                            />
-                                                          </div>
-                                                        ) : allQuestion?.isFriend ===
-                                                          "sent" ? (
-                                                          ""
                                                         ) : (
                                                           ""
-                                                        )
-                                                      ) : (
-                                                        ""
-                                                      )}
+                                                        )}
+                                                      </div>
                                                     </div>
                                                   </div>
                                                 </div>
-                                              </div>
-                                            )}
+                                              )}
                                           </div>
+                                        </div>
+                                        <div className="votes">
+                                          <img src={upVote} className="vote-icon" />
+                                          <div className="rating">1</div>
+                                          <img src={downVote} className="vote-icon" />
                                         </div>
                                       </div>
                                       <div className="profile-grid-items">
                                         {allQuestion?.createdBy
                                           ?.currentRole && (
-                                          <span class="borderlefttext">
-                                            <span class="category">
-                                              {" "}
-                                              {`${allQuestion?.createdBy?.currentRole}`}
+                                            <span class="borderlefttext">
+                                              <span class="category">
+                                                {" "}
+                                                {`${allQuestion?.createdBy?.currentRole}`}
+                                              </span>
                                             </span>
-                                          </span>
-                                        )}
+                                          )}
 
                                         {allQuestion?.displayProfile === true &&
-                                        allQuestion?.filter?.map((f) => {
-                                          if (
-                                            f?.filterId ==
-                                            "619e07b7641d2f00f887ec96"
-                                          ) {
-                                            return f?.options?.map((o) => {
-                                              if (
-                                                userData?.subject[0] ==
+                                          allQuestion?.filter?.map((f) => {
+                                            if (
+                                              f?.filterId ==
+                                              "619e07b7641d2f00f887ec96"
+                                            ) {
+                                              return f?.options?.map((o) => {
+                                                if (
+                                                  userData?.subject[0] ==
                                                   o?.optionName ||
-                                                userData?.subject[1] ==
+                                                  userData?.subject[1] ==
                                                   o?.optionName ||
-                                                userData?.subject[2] ==
+                                                  userData?.subject[2] ==
                                                   o?.optionName ||
-                                                userData?.subject[3] ==
+                                                  userData?.subject[3] ==
                                                   o?.optionName
-                                              ) {
-                                                return o?.optionName;
-                                              }
-                                            });
-                                          }
-                                        }).length > 0 ? (
+                                                ) {
+                                                  return o?.optionName;
+                                                }
+                                              });
+                                            }
+                                          }).length > 0 ? (
                                           <span class="borderlefttext">
                                             {allQuestion?.filter?.map((f) => {
                                               return (
                                                 f?.filterId ==
-                                                  "619e07b7641d2f00f887ec96" &&
+                                                "619e07b7641d2f00f887ec96" &&
                                                 f?.options?.map((opt) => {
                                                   return (
                                                     <span class="category">
@@ -889,96 +897,96 @@ export default function MyQuery() {
                                                 allQuestion.createdAt
                                               ).fromNow() ==
                                                 "a few seconds ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "1 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "2 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "3 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "4 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "5 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "6 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "7 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "8 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "9 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "10 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "11 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "12 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "13 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "14 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "15 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "16 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "17 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "18 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "19 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "20 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "21 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "22 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "23 hours ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "3 days ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "1 days ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "2 days ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "4 days ago" ||
-                                              moment(
-                                                allQuestion.createdAt
-                                              ).fromNow() == "5 days ago"
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "1 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "2 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "3 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "4 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "5 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "6 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "7 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "8 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "9 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "10 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "11 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "12 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "13 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "14 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "15 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "16 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "17 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "18 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "19 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "20 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "21 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "22 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "23 hours ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "3 days ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "1 days ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "2 days ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "4 days ago" ||
+                                                moment(
+                                                  allQuestion.createdAt
+                                                ).fromNow() == "5 days ago"
                                                 ? moment(
-                                                    allQuestion.createdAt
-                                                  ).fromNow()
+                                                  allQuestion.createdAt
+                                                ).fromNow()
                                                 : moment(
-                                                    allQuestion.createdAt
-                                                  ).format("ll")}
+                                                  allQuestion.createdAt
+                                                ).format("ll")}
 
                                               {/* {moment(
                                               allQuestion.createdAt
@@ -1021,9 +1029,9 @@ export default function MyQuery() {
                                               <span>Connect</span>
                                             </button> */}
                                           {allQuestion?.allowConnectionRequest ===
-                                          true ? (
+                                            true ? (
                                             allQuestion?.isFriend ===
-                                            "pending" ? (
+                                              "pending" ? (
                                               <>
                                                 <button>
                                                   <NavLink to={`/connections`}>
